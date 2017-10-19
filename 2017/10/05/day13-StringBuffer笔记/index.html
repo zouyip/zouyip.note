@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="hello,haha," />
+  <meta name="keywords" content="String," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="###12.01_常见对象(Scanner的概述和方法介绍)(掌握)  A:Scanner的概述 B:Scanner的构造方法原理  Scanner(InputStream source) System类下有一个静态的字段： public static final InputStream in; 标准的输入流，对应着键盘录入。     C:一般方法  hasNextXxx()  判断是否还有下一个">
-<meta name="keywords" content="hello,haha">
+<meta name="description" content="###13.01_常见对象(StringBuffer类的概述)  A:StringBuffer类概述 通过JDK提供的API，查看StringBuffer类的说明 线程安全的可变字符序列    B:StringBuffer和String的区别 String是一个不可变的字符序列 StringBuffer是一个可变的字符序列     ###13.02_常见对象(StringBuffer类的构造方法)">
+<meta name="keywords" content="String">
 <meta property="og:type" content="article">
-<meta property="og:title" content="String类概述">
-<meta property="og:url" content="http://zouyip.github.io/2017/10/05/day12-String笔记/index.html">
+<meta property="og:title" content="StringBuffer类">
+<meta property="og:url" content="http://zouyip.github.io/2017/10/05/day13-StringBuffer笔记/index.html">
 <meta property="og:site_name" content="菜鸟的心酸历程">
-<meta property="og:description" content="###12.01_常见对象(Scanner的概述和方法介绍)(掌握)  A:Scanner的概述 B:Scanner的构造方法原理  Scanner(InputStream source) System类下有一个静态的字段： public static final InputStream in; 标准的输入流，对应着键盘录入。     C:一般方法  hasNextXxx()  判断是否还有下一个">
+<meta property="og:description" content="###13.01_常见对象(StringBuffer类的概述)  A:StringBuffer类概述 通过JDK提供的API，查看StringBuffer类的说明 线程安全的可变字符序列    B:StringBuffer和String的区别 String是一个不可变的字符序列 StringBuffer是一个可变的字符序列     ###13.02_常见对象(StringBuffer类的构造方法)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-11T02:10:42.062Z">
+<meta property="og:updated_time" content="2017-10-19T07:58:54.337Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="String类概述">
-<meta name="twitter:description" content="###12.01_常见对象(Scanner的概述和方法介绍)(掌握)  A:Scanner的概述 B:Scanner的构造方法原理  Scanner(InputStream source) System类下有一个静态的字段： public static final InputStream in; 标准的输入流，对应着键盘录入。     C:一般方法  hasNextXxx()  判断是否还有下一个">
+<meta name="twitter:title" content="StringBuffer类">
+<meta name="twitter:description" content="###13.01_常见对象(StringBuffer类的概述)  A:StringBuffer类概述 通过JDK提供的API，查看StringBuffer类的说明 线程安全的可变字符序列    B:StringBuffer和String的区别 String是一个不可变的字符序列 StringBuffer是一个可变的字符序列     ###13.02_常见对象(StringBuffer类的构造方法)">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://zouyip.github.io/2017/10/05/day12-String笔记/"/>
+  <link rel="canonical" href="http://zouyip.github.io/2017/10/05/day13-StringBuffer笔记/"/>
 
 
 
 
 
-  <title>String类概述 | 菜鸟的心酸历程</title>
+  <title>StringBuffer类 | 菜鸟的心酸历程</title>
   
 
 
@@ -283,7 +283,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zouyip.github.io/2017/10/05/day12-String笔记/">
+    <link itemprop="mainEntityOfPage" href="http://zouyip.github.io/2017/10/05/day13-StringBuffer笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zou Yipeng">
@@ -300,7 +300,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">String类概述</h1>
+          <h1 class="post-title" itemprop="name headline">StringBuffer类</h1>
         
 
         <div class="post-meta">
@@ -335,8 +335,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hello/" itemprop="url" rel="index">
-                    <span itemprop="name">hello</span>
+                  <a href="/categories/StringBuffer/" itemprop="url" rel="index">
+                    <span itemprop="name">StringBuffer</span>
                   </a>
                 </span>
 
@@ -372,251 +372,378 @@
       
 
       
-        <p>###12.01_常见对象(Scanner的概述和方法介绍)(掌握)</p>
+        <p>###13.01_常见对象(StringBuffer类的概述)</p>
 <ul>
-<li>A:Scanner的概述</li>
-<li><p>B:Scanner的构造方法原理</p>
+<li>A:StringBuffer类概述<ul>
+<li>通过JDK提供的API，查看StringBuffer类的说明</li>
+<li>线程安全的可变字符序列 </li>
+</ul>
+</li>
+<li>B:StringBuffer和String的区别<ul>
+<li>String是一个不可变的字符序列</li>
+<li>StringBuffer是一个可变的字符序列 </li>
+</ul>
+</li>
+</ul>
+<p>###13.02_常见对象(StringBuffer类的构造方法)</p>
 <ul>
-<li>Scanner(InputStream source)</li>
-<li>System类下有一个静态的字段：<ul>
-<li>public static final InputStream in; 标准的输入流，对应着键盘录入。</li>
+<li>A:StringBuffer的构造方法：<ul>
+<li>public StringBuffer():无参构造方法</li>
+<li>public StringBuffer(int capacity):指定容量的字符串缓冲区对象</li>
+<li>public StringBuffer(String str):指定字符串内容的字符串缓冲区对象</li>
+</ul>
+</li>
+<li>B:StringBuffer的方法：<ul>
+<li>public int capacity()：返回当前容量。    理论值(不掌握)</li>
+<li>public int length():返回长度（字符数）。 实际值</li>
+</ul>
+</li>
+<li>C:案例演示<ul>
+<li>构造方法和长度方法的使用</li>
 </ul>
 </li>
 </ul>
-</li>
-<li><p>C:一般方法</p>
+<p>###13.03_常见对象(StringBuffer的添加功能)</p>
 <ul>
-<li>hasNextXxx()  判断是否还有下一个输入项,其中Xxx可以是Int,Double等。如果需要判断是否包含下一个字符串，则可以省略Xxx</li>
-<li>nextXxx()  获取下一个输入项。Xxx的含义和上个方法中的Xxx相同,默认情况下，Scanner使用空格，回车等作为分隔符</li>
-</ul>
-</li>
-</ul>
-<p>###12.02_常见对象(Scanner获取数据出现的小问题及解决方案)(掌握)</p>
+<li><p>A:StringBuffer的添加功能</p>
 <ul>
-<li>A:两个常用的方法：<ul>
-<li>public int nextInt():获取一个int类型的值</li>
-<li>public String nextLine():获取一个String类型的值</li>
+<li>public StringBuffer append(String str):<ul>
+<li>可以把任意类型数据添加到字符串缓冲区里面,并返回字符串缓冲区本身</li>
 </ul>
 </li>
-<li>B:案例演示<ul>
-<li>a:先演示获取多个int值，多个String值的情况</li>
-<li>b:再演示先获取int值，然后获取String值出现问题</li>
-<li>c:问题解决方案<ul>
-<li>第一种：先获取一个数值后，再创建一个新的键盘录入对象获取字符串。</li>
-<li>第二种：把所有的数据都先按照字符串获取，然后要什么，你就对应的转换为什么。(后面讲)</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>###12.03_常见对象(String类的概述)(掌握)</p>
+<li><p>public StringBuffer insert(int offset,String str):</p>
 <ul>
-<li><p>A:String类的概述    </p>
+<li>在指定位置把任意类型的数据插入到字符串缓冲区里面,并返回字符串缓冲区本身</li>
+</ul>
+<p>StringBuffer是字符串缓冲区,当new的时候是在堆内存创建了一个对象,底层是一个长度为16的字符数组<br>  当调用添加的方法时,不会再重新创建对象,在不断向原缓冲区添加字符</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>###13.04_常见对象(StringBuffer的删除功能)</p>
 <ul>
-<li><p>通过JDK提供的API，查看String类的说明</p>
+<li>A:StringBuffer的删除功能<ul>
+<li>public StringBuffer deleteCharAt(int index):<ul>
+<li>删除指定位置的字符，并返回本身</li>
+</ul>
 </li>
-<li><p>可以看到这样的两句话。</p>
+<li>public StringBuffer delete(int start,int end):<ul>
+<li>删除从指定位置开始指定位置结束的内容，并返回本身</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>###13.05_常见对象(StringBuffer的替换和反转功能)</p>
 <ul>
-<li>a:字符串字面值”abc”也可以看成是一个字符串对象。</li>
-<li>b:字符串是常量，一旦被赋值，就不能被改变。<br>String str = “abc”;                    //“abc”可以看成一个字符串对象<br>str = “def”;                        //当把”def”赋值给str,原来的”abc”就变成了垃圾<br>System.out.println(str);        //输出def，但是并不是改变了“abc”，而是重新创建了一个对象“def”并将地址值赋给了str</li>
+<li>A:StringBuffer的替换功能<ul>
+<li>public StringBuffer replace(int start,int end,String str):<ul>
+<li>从start开始到end用str替换</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>B:StringBuffer的反转功能<ul>
+<li>public StringBuffer reverse():<ul>
+<li>字符串反转</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-<p>###12.04_常见对象(String类的构造方法)(掌握)</p>
+<p>###13.06_常见对象(StringBuffer的截取功能及注意事项)</p>
 <ul>
-<li>A:常见构造方法<ul>
-<li>public String():空构造</li>
-<li>public String(byte[] bytes):把字节数组转成字符串</li>
-<li>public String(byte[] bytes,int index,int length):把字节数组的一部分转成字符串</li>
-<li>public String(char[] value):把字符数组转成字符串</li>
-<li>public String(char[] value,int index,int count):把字符数组的一部分转成字符串</li>
-<li>public String(String original):把字符串常量值转成字符串</li>
+<li>A:StringBuffer的截取功能<ul>
+<li>public String substring(int start):<ul>
+<li>从指定位置截取到末尾</li>
 </ul>
 </li>
-<li>B:案例演示    <ul>
-<li>演示String类的常见构造方法</li>
+<li>public String substring(int start,int end):<ul>
+<li>截取从指定位置开始到结束位置，包括开始位置，不包括结束位置</li>
 </ul>
 </li>
 </ul>
-<p>###12.05_常见对象(String类的常见面试题)(掌握)</p>
+</li>
+<li>B:注意事项<ul>
+<li>注意:返回值类型不再是StringBuffer本身</li>
+</ul>
+</li>
+</ul>
+<p>###13.07_常见对象(StringBuffer和String的相互转换)</p>
 <ul>
-<li>1.判断定义为String类型的s1和s2是否相等<ul>
-<li>String s1 = “abc”;            //常量池中没有这个字符串对象,就创建一个,如果有直接用即可</li>
-<li>String s2 = “abc”;</li>
-<li>System.out.println(s1 == s2);         –true            </li>
-<li>System.out.println(s1.equals(s2));     –true</li>
+<li>A:String – StringBuffer<ul>
+<li>a:通过构造方法</li>
+<li>b:通过append()方法</li>
 </ul>
 </li>
-<li>2.下面这句话在内存中创建了几个对象?<br>  //创建两个对象,一个在常量池中,一个在堆内存中<ul>
-<li>String s1 = new String(“abc”);    –创建了两个对象，记录的是堆内存对象的地址值<pre><code>（在常量池中也会创建一个对象，堆中也会创建一个对象）堆中的对象相当于是常量池中的副本    
+<li>B:StringBuffer – String<ul>
+<li>a:通过构造方法</li>
+<li>b:通过toString()方法</li>
+<li>c:通过subString(0,length);</li>
+</ul>
+</li>
+</ul>
+<p>###13.08_常见对象(把数组转成字符串)</p>
+<ul>
+<li><p>A:案例演示</p>
+<ul>
+<li>需求：把数组中的数据按照指定个格式拼接成一个字符串</li>
+<li><pre><code>举例：
+    int[] arr = {1,2,3};    
+输出结果：
+    &quot;[1, 2, 3]&quot;
+
+用StringBuffer的功能实现
 </code></pre></li>
 </ul>
 </li>
-<li>3.判断定义为String类型的s1和s2是否相等<ul>
-<li>String s1 = new String(“abc”);        //记录的是堆内存对象的地址值        </li>
-<li>String s2 = “abc”;                    //记录的是常量池中的地址值</li>
-<li>System.out.println(s1 == s2); ?        –false</li>
-<li>System.out.println(s1.equals(s2)); ?    –true</li>
 </ul>
-</li>
-<li>4.判断定义为String类型的s1和s2是否相等<ul>
-<li>String s1 = “a” + “b” + “c”;</li>
-<li>String s2 = “abc”;</li>
-<li>System.out.println(s1 == s2); ?            //true,java中有常量优化机制</li>
-<li>System.out.println(s1.equals(s2)); ?        //true</li>
-</ul>
-</li>
-<li>5.判断定义为String类型的s1和s2是否相等<ul>
-<li>String s1 = “ab”;</li>
-<li>String s2 = “abc”;</li>
-<li>String s3 = s1 + “c”;</li>
-<li>System.out.println(s3 == s2);                –false</li>
-<li>System.out.println(s3.equals(s2)); ?        –true    </li>
-</ul>
-</li>
-</ul>
-<p>java语言提供对字符串串联符号（“+”）以及将其他对象转换为字符串的特殊支持。字符串串联是通过StringBuilder（或StringBuffer）<br>及其append方法实现的。字符串转换是通过toString方法是实现的。<br>    字符串常量直接赋值给String类声明的变量，则从常量池中寻找该字符串常量赋值给该变量，若常量池中没有创建该字符串常量则<br>    在常量池中创建该字符串常量然后赋值给该String变量<br>    eg：* String s1 = “abc”;</p>
-<pre><code>    * String s2 = &quot;abc&quot;;
-    * System.out.println(s1 == s2);                     
-    * System.out.println(s1.equals(s2)); 
-    其中s1与s2指向的是常量池中同一个常量，地址值相同。
+<p>###13.09_常见对象(字符串反转)</p>
+<ul>
+<li>A:案例演示</li>
+<li><pre><code>需求：把字符串反转
+    举例：键盘录入&quot;abc&quot;        
+    输出结果：&quot;cba&quot;
 
-###12.06_常见对象(String类的判断功能)(掌握)
-</code></pre><ul>
-<li>A:String类的判断功能<ul>
-<li>boolean equals(Object obj):比较字符串的内容是否相同,区分大小写</li>
-<li>boolean equalsIgnoreCase(String str):比较字符串的内容是否相同,忽略大小写</li>
-<li>boolean contains(String str):判断大字符串中是否包含小字符串</li>
-<li>boolean startsWith(String str):判断字符串是否以某个指定的字符串开头</li>
-<li>boolean endsWith(String str):判断字符串是否以某个指定的字符串结尾</li>
-<li>boolean isEmpty():判断字符串是否为空。</li>
+用StringBuffer的功能实现    
+</code></pre></li>
+</ul>
+<p>###13.10_常见对象(StringBuffer和StringBuilder的区别)</p>
+<ul>
+<li>A:StringBuilder的概述<ul>
+<li>通过查看API了解一下StringBuilder类</li>
+</ul>
+</li>
+<li><p>B:面试题</p>
+<ul>
+<li>String,StringBuffer,StringBuilder的区别</li>
+<li>StringBuffer和StringBuilder的区别</li>
+<li>StringBuffer是jdk1.0版本的,是线程安全的,效率低</li>
+<li><p>StringBuilder是jdk1.5版本的,是线程不安全的,效率高</p>
+</li>
+<li><p>String和StringBuffer,StringBuilder的区别</p>
+</li>
+<li>String是一个不可变的字符序列</li>
+<li>StringBuffer,StringBuilder是可变的字符序列</li>
 </ul>
 </li>
 </ul>
-<p>###12.07_常见对象(模拟用户登录)(掌握)</p>
+<p>###13.11_常见对象(String和StringBuffer分别作为参数传递)</p>
+<ul>
+<li>A:形式参数问题<ul>
+<li>String作为参数传递</li>
+<li>StringBuffer作为参数传递 </li>
+</ul>
+</li>
+<li>B:案例演示<ul>
+<li>String和StringBuffer分别作为参数传递问题</li>
+</ul>
+</li>
+</ul>
+<p>###13.12_常见对象(数组高级冒泡排序原理图解)</p>
+<ul>
+<li>A:画图演示</li>
+<li><pre><code>需求：
+    数组元素：{24, 69, 80, 57, 13}
+    请对数组元素进行排序。
+
+    冒泡排序
+        相邻元素两两比较，大的往后放，第一次完毕，最大值出现在了最大索引处
+</code></pre></li>
+</ul>
+<p>###13.13_常见对象(数组高级冒泡排序代码实现)</p>
 <ul>
 <li>A:案例演示<ul>
-<li>需求：模拟登录,给三次机会,并提示还有几次。</li>
-<li>用户名和密码都是admin</li>
+<li>数组高级冒泡排序代码</li>
 </ul>
 </li>
 </ul>
-<p>###12.08_常见对象(String类的获取功能)(掌握)</p>
+<p>###13.14_常见对象(数组高级选择排序原理图解)</p>
 <ul>
-<li>A:String类的获取功能<ul>
-<li>int length():获取字符串的长度。</li>
-<li>char charAt(int index):获取指定索引位置的字符</li>
-<li>int indexOf(int ch):返回指定字符在此字符串中第一次出现处的索引。</li>
-<li>int indexOf(String str):返回指定字符串在此字符串中第一次出现处的索引。</li>
-<li>int indexOf(int ch,int fromIndex):返回指定字符在此字符串中从指定位置后第一次出现处的索引。</li>
-<li>int indexOf(String str,int fromIndex):返回指定字符串在此字符串中从指定位置后第一次出现处的索引。</li>
-<li>lastIndexOf</li>
-<li>String substring(int start):从指定位置开始截取字符串,默认到末尾。</li>
-<li>String substring(int start,int end):从指定位置开始到指定位置结束截取字符串。</li>
-</ul>
-</li>
-</ul>
-<p>###12.09_常见对象(字符串的遍历)(掌握)</p>
+<li><p>A:画图演示</p>
 <ul>
-<li>A:案例演示<ul>
-<li>需求：遍历字符串</li>
+<li><p>需求：</p>
+<ul>
+<li>数组元素：{24, 69, 80, 57, 13}</li>
+<li><p>请对数组元素进行排序。</p>
+</li>
+<li><p>选择排序</p>
+<ul>
+<li>从0索引开始，依次和后面元素比较，小的往前放，第一次完毕，最小值出现在了最小索引处</li>
 </ul>
 </li>
 </ul>
-<p>###12.10_常见对象(统计不同类型字符个数)(掌握)</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>###13.15_常见对象(数组高级选择排序代码实现)</p>
 <ul>
 <li>A:案例演示<ul>
-<li>需求：统计一个字符串中大写字母字符，小写字母字符，数字字符出现的次数,其他字符出现的次数。</li>
-<li>ABCDEabcd123456!@#$%^</li>
+<li>数组高级选择排序代码</li>
 </ul>
 </li>
 </ul>
-<p>###12.11_常见对象(String类的转换功能)(掌握)</p>
-<ul>
-<li>A:String的转换功能：<ul>
-<li>byte[] getBytes():把字符串转换为字节数组。</li>
-<li>char[] toCharArray():把字符串转换为字符数组。</li>
-<li>static String valueOf(char[] chs):把字符数组转成字符串。</li>
-<li>static String valueOf(int i):把int类型的数据转成字符串。<ul>
-<li>注意：String类的valueOf方法可以把任意类型的数据转成字符串。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<pre><code>* String toLowerCase():把字符串转成小写。(了解)
-* String toUpperCase():把字符串转成大写。
-* String concat(String str):把字符串拼接。
-</code></pre><p>###12.12_常见对象(按要求转换字符)(链式编程掌握)</p>
-<ul>
-<li>A:案例演示<ul>
-<li>需求：把一个字符串的首字母转成大写，其余为小写。(只考虑英文大小写字母字符)</li>
-</ul>
-</li>
-</ul>
-<p>###12.13_常见对象(把数组转成字符串)</p>
-<ul>
-<li>A:案例演示<ul>
-<li>需求：把数组中的数据按照指定个格式拼接成一个字符串<ul>
-<li>举例：<ul>
-<li>int[] arr = {1,2,3};    </li>
-</ul>
-</li>
-<li>输出结果：<ul>
-<li>“[1, 2, 3]”<br>###12.14_常见对象(String类的其他功能)</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>A:String的替换功能及案例演示<ul>
-<li>String replace(char old,char new)</li>
-<li>String replace(String old,String new)</li>
-</ul>
-</li>
-<li>B:String的去除字符串两空格及案例演示<ul>
-<li>String trim()</li>
-</ul>
-</li>
-<li>C:String的按字典顺序比较两个字符串及案例演示<ul>
-<li>int compareTo(String str)(暂时不用掌握)</li>
-<li>int compareToIgnoreCase(String str)(了解)</li>
-</ul>
-</li>
-</ul>
-<p>###12.15_常见对象(字符串反转)</p>
-<ul>
-<li>A:案例演示<ul>
-<li>需求：把字符串反转<ul>
-<li>举例：键盘录入”abc”        </li>
-<li>输出结果：”cba”</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>###12.16_常见对象(在大串中查找小串出现的次数思路图解)</p>
+<p>###13.16_常见对象(数组高级二分查找原理图解)</p>
 <ul>
 <li>A:画图演示<ul>
-<li>需求：统计大串中小串出现的次数</li>
-<li>这里的大串和小串可以自己根据情况给出</li>
+<li>二分查找  </li>
+<li>前提：数组元素有序</li>
 </ul>
 </li>
 </ul>
-<p>###12.17_常见对象(在大串中查找小串出现的次数代码实现)</p>
+<p>###13.17_常见对象(数组高级二分查找代码实现及注意事项)</p>
 <ul>
-<li>A:案例演示    <ul>
-<li>统计大串中小串出现的次数</li>
+<li>A:案例演示<ul>
+<li>数组高级二分查找代码</li>
+</ul>
+</li>
+<li>B:注意事项<ul>
+<li>如果数组无序，就不能使用二分查找。<ul>
+<li>因为如果你排序了，但是你排序的时候已经改变了我最原始的元素索引。</li>
 </ul>
 </li>
 </ul>
-<p><em>String对象的底层实际上是一个char[]数组：private final char value[];<br>用final修饰的对象值可变，但是引用不变，即：value指向不可变，但是value[]数组的值可变，<br>但因为有private关键字对其进行封装达到value[]数组值也不可变的目的
-</em>而StringBuffer对象的底层也是一个char[]数组：char[] value;<br>但是并没有用final修饰，所以数组的值是可变的。</p>
-<p>##final意义：最终的，不可改变的。<br>　　1、修饰变量，为常量,值不可变；<br>　　2、修饰对象，值可变,引用不变；<br>　　3、修饰方法，方法不可重写；<br>　　4、修饰类，无子类，不可以被继承,更不可能被重写。</p>
-<p>###12.18_day12总结</p>
+</li>
+</ul>
+<p>####总结：循环嵌套的排序算法中外层循环控制的是比较的次数。</p>
+<p>###13.18_常见对象(Arrays类的概述和方法使用)</p>
+<ul>
+<li>A:Arrays类概述<ul>
+<li>针对数组进行操作的工具类。</li>
+<li>提供了排序，查找等功能。</li>
+</ul>
+</li>
+<li>B:成员方法<ul>
+<li>public static String toString(int[] a)</li>
+<li>public static void sort(int[] a)</li>
+<li>public static int binarySearch(int[] a,int key)</li>
+</ul>
+</li>
+</ul>
+<p>###13.19_常见对象(基本类型包装类的概述)</p>
+<ul>
+<li>A:为什么会有基本类型包装类<ul>
+<li>将基本数据类型封装成对象的好处在于可以在对象中定义更多的功能方法操作该数据。</li>
+</ul>
+</li>
+<li>B:常用操作<ul>
+<li>常用的操作之一：用于基本数据类型与字符串之间的转换。</li>
+</ul>
+</li>
+<li>C:基本类型和包装类的对应</li>
+<li><pre><code>byte             Byte
+short            Short
+int                Integer
+long            Long
+float            Float
+double            Double
+char            Character
+boolean            Boolean
+</code></pre></li>
+</ul>
+<p>###13.20_常见对象(Integer类的概述和构造方法)</p>
+<ul>
+<li><p>A:Integer类概述</p>
+<ul>
+<li><p>通过JDK提供的API，查看Integer类的说明</p>
+</li>
+<li><p>Integer 类在对象中包装了一个基本类型 int 的值,</p>
+</li>
+<li>该类提供了多个方法，能在 int 类型和 String 类型之间互相转换，</li>
+<li>还提供了处理 int 类型时非常有用的其他一些常量和方法</li>
+</ul>
+</li>
+<li>B:构造方法<ul>
+<li>public Integer(int value)</li>
+<li>public Integer(String s)<br>  //Integer i2 = new Integer(“abc”);            //java.lang.NumberFormatException数字格式异常<br>  //System.out.println(i2);                    //因为abc不是数字字符串,所以转换会报错</li>
+</ul>
+</li>
+<li>C:案例演示<ul>
+<li>使用构造方法创建对象</li>
+</ul>
+</li>
+</ul>
+<p>###13.21_常见对象(String和int类型的相互转换)</p>
+<ul>
+<li>A:int – String<ul>
+<li>a:和””进行拼接</li>
+<li>b:public static String valueOf(int i)</li>
+<li>c:int – Integer – String(Integer类的toString方法())</li>
+<li>d:public static String toString(int i)(Integer类的静态方法)</li>
+</ul>
+</li>
+<li>B:String – int<ul>
+<li>a:String – Integer – int</li>
+<li>public static int parseInt(String s)</li>
+</ul>
+</li>
+</ul>
+<p>###13.22_常见对象(JDK5的新特性自动装箱和拆箱)</p>
+<ul>
+<li>A:JDK5的新特性<ul>
+<li>自动装箱：把基本类型转换为包装类类型</li>
+<li>自动拆箱：把包装类类型转换为基本类型</li>
+</ul>
+</li>
+<li><p>B:案例演示</p>
+<ul>
+<li><p>JDK5的新特性自动装箱和拆箱</p>
+</li>
+<li><p>Integer ii = 100;</p>
+</li>
+<li>ii += 200;</li>
+</ul>
+</li>
+<li>C:注意事项<ul>
+<li>在使用时，Integer  x = null;代码就会出现NullPointerException。</li>
+<li>建议先判断是否为null，然后再使用。</li>
+</ul>
+</li>
+</ul>
+<p>###13.23_常见对象(Integer的面试题)</p>
+<ul>
+<li>A:Integer的面试题</li>
+<li><pre><code>看程序写结果
+
+Integer i1 = new Integer(97);
+Integer i2 = new Integer(97);
+System.out.println(i1 == i2);        //false
+System.out.println(i1.equals(i2));    //true
+System.out.println(&quot;-----------&quot;);
+
+Integer i3 = new Integer(197);
+Integer i4 = new Integer(197);
+System.out.println(i3 == i4);        //false
+System.out.println(i3.equals(i4));    //true
+System.out.println(&quot;-----------&quot;);
+
+Integer i5 = 97;
+Integer i6 = 97;
+System.out.println(i5 == i6);        //true
+System.out.println(i5.equals(i6));    //true 
+System.out.println(&quot;-----------&quot;);
+
+Integer i7 = 197;
+Integer i8 = 197;
+System.out.println(i7 == i8);        //false
+System.out.println(i7.equals(i8));    //true    
+</code></pre></li>
+<li><p>-128到127是byte的取值范围,如果在这个取值范围内,自动装箱就不会新创建对象,而是从常量池中获取</p>
+<pre><code>* 如果超过了byte取值范围就会再新创建对象
+* 
+* public static Integer valueOf(int i) {
+       assert IntegerCache.high &gt;= 127;
+       if (i &gt;= IntegerCache.low &amp;&amp; i &lt;= IntegerCache.high)            //i&gt;= -128 &amp;&amp; i &lt;= 127
+           return IntegerCache.cache[i + (-IntegerCache.low)];
+       return new Integer(i);
+   }
+*/
+</code></pre><p>  }</p>
+</li>
+</ul>
+<p>}</p>
+<p>###13.24_day13总结</p>
 <ul>
 <li>把今天的知识点总结一遍。</li>
 </ul>
@@ -637,9 +764,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/hello/" rel="tag"># hello</a>
-          
-            <a href="/tags/haha/" rel="tag"># haha</a>
+            <a href="/tags/String/" rel="tag"># String</a>
           
         </div>
       
@@ -652,18 +777,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/05/day13-StringBuffer笔记/" rel="next" title="StringBuffer类">
-                <i class="fa fa-chevron-left"></i> StringBuffer类
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/10/13/用通俗语言说restful/" rel="prev" title="通俗地讲RESTFUL">
-                通俗地讲RESTFUL <i class="fa fa-chevron-right"></i>
+              <a href="/2017/10/05/day12-String笔记/" rel="prev" title="String类概述">
+                String类概述 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
