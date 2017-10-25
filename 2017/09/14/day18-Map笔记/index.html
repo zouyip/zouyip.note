@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="ArrayList，泛型," />
+  <meta name="keywords" content="Map," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="###16.01_集合框架(去除ArrayList中重复字符串元素方式)(掌握)  A:案例演示  需求：ArrayList去除集合中字符串的重复值(字符串的内容相同) 思路：创建新集合方式 /**  *  A:案例演示  * 需求：ArrayList去除集合中字符串的重复值(字符串的内容相同)  * 思路：创建新集合方式  */ public static void main(String[]">
-<meta name="keywords" content="ArrayList，泛型">
+<meta name="description" content="###18.01_集合框架(Map集合概述和特点)  A:Map接口概述 查看API可以知道： 将键映射到值的对象 一个映射不能包含重复的键 每个键最多只能映射到一个值     B:Map接口和Collection接口的不同 Map是双列的,Collection是单列的 Map的键唯一,Collection的子体系Set是唯一的 Map集合的数据结构只针对键有效，跟值无关;Collection集合">
+<meta name="keywords" content="Map">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ArrayList，泛型">
-<meta property="og:url" content="http://zouyip.github.io/2017/09/12/day16-ArrayList、泛型笔记/index.html">
+<meta property="og:title" content="Map">
+<meta property="og:url" content="http://zouyip.github.io/2017/09/14/day18-Map笔记/index.html">
 <meta property="og:site_name" content="菜鸟的心酸历程">
-<meta property="og:description" content="###16.01_集合框架(去除ArrayList中重复字符串元素方式)(掌握)  A:案例演示  需求：ArrayList去除集合中字符串的重复值(字符串的内容相同) 思路：创建新集合方式 /**  *  A:案例演示  * 需求：ArrayList去除集合中字符串的重复值(字符串的内容相同)  * 思路：创建新集合方式  */ public static void main(String[]">
+<meta property="og:description" content="###18.01_集合框架(Map集合概述和特点)  A:Map接口概述 查看API可以知道： 将键映射到值的对象 一个映射不能包含重复的键 每个键最多只能映射到一个值     B:Map接口和Collection接口的不同 Map是双列的,Collection是单列的 Map的键唯一,Collection的子体系Set是唯一的 Map集合的数据结构只针对键有效，跟值无关;Collection集合">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-25T01:49:34.123Z">
+<meta property="og:updated_time" content="2017-10-25T02:51:08.146Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ArrayList，泛型">
-<meta name="twitter:description" content="###16.01_集合框架(去除ArrayList中重复字符串元素方式)(掌握)  A:案例演示  需求：ArrayList去除集合中字符串的重复值(字符串的内容相同) 思路：创建新集合方式 /**  *  A:案例演示  * 需求：ArrayList去除集合中字符串的重复值(字符串的内容相同)  * 思路：创建新集合方式  */ public static void main(String[]">
+<meta name="twitter:title" content="Map">
+<meta name="twitter:description" content="###18.01_集合框架(Map集合概述和特点)  A:Map接口概述 查看API可以知道： 将键映射到值的对象 一个映射不能包含重复的键 每个键最多只能映射到一个值     B:Map接口和Collection接口的不同 Map是双列的,Collection是单列的 Map的键唯一,Collection的子体系Set是唯一的 Map集合的数据结构只针对键有效，跟值无关;Collection集合">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://zouyip.github.io/2017/09/12/day16-ArrayList、泛型笔记/"/>
+  <link rel="canonical" href="http://zouyip.github.io/2017/09/14/day18-Map笔记/"/>
 
 
 
 
 
-  <title>ArrayList，泛型 | 菜鸟的心酸历程</title>
+  <title>Map | 菜鸟的心酸历程</title>
   
 
 
@@ -283,7 +283,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zouyip.github.io/2017/09/12/day16-ArrayList、泛型笔记/">
+    <link itemprop="mainEntityOfPage" href="http://zouyip.github.io/2017/09/14/day18-Map笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zou Yipeng">
@@ -300,7 +300,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">ArrayList，泛型</h1>
+          <h1 class="post-title" itemprop="name headline">Map</h1>
         
 
         <div class="post-meta">
@@ -312,8 +312,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-12T16:53:30+08:00">
-                2017-09-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-14T15:25:20+08:00">
+                2017-09-14
               </time>
             
 
@@ -372,318 +372,332 @@
       
 
       
-        <p>###16.01_集合框架(去除ArrayList中重复字符串元素方式)(掌握)</p>
+        <p>###18.01_集合框架(Map集合概述和特点)</p>
+<ul>
+<li>A:Map接口概述<ul>
+<li>查看API可以知道：<ul>
+<li>将键映射到值的对象</li>
+<li>一个映射不能包含重复的键</li>
+<li>每个键最多只能映射到一个值</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>B:Map接口和Collection接口的不同<ul>
+<li>Map是双列的,Collection是单列的</li>
+<li>Map的键唯一,Collection的子体系Set是唯一的</li>
+<li>Map集合的数据结构只针对键有效，跟值无关;Collection集合的数据结构是针对元素有效</li>
+</ul>
+</li>
+</ul>
+<p>###18.02_集合框架(Map集合的功能概述)</p>
+<ul>
+<li>A:Map集合的功能概述<ul>
+<li>a:添加功能<ul>
+<li>V put(K key,V value):添加元素。<ul>
+<li>如果键是第一次存储，就直接存储元素，返回null</li>
+<li>如果键不是第一次存在，就用值把以前的值替换掉，返回以前的值</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>b:删除功能<ul>
+<li>void clear():移除所有的键值对元素</li>
+<li>V remove(Object key)：根据键删除键值对元素，并把值返回</li>
+</ul>
+</li>
+<li>c:判断功能<ul>
+<li>boolean containsKey(Object key)：判断集合是否包含指定的键</li>
+<li>boolean containsValue(Object value):判断集合是否包含指定的值</li>
+<li>boolean isEmpty()：判断集合是否为空</li>
+</ul>
+</li>
+<li>d:获取功能<ul>
+<li>Set<map.entry<k,v>&gt; entrySet():</map.entry<k,v></li>
+<li>V get(Object key):根据键获取值</li>
+<li>Set<k> keySet():获取集合中所有键的集合</k></li>
+<li>Collection<v> values():获取集合中所有值的集合</v></li>
+</ul>
+</li>
+<li>e:长度功能<ul>
+<li>int size()：返回集合中的键值对的个数</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>###18.03_集合框架(Map集合的遍历之键找值)</p>
+<ul>
+<li>A:键找值思路：<ul>
+<li>获取所有键的集合</li>
+<li>遍历键的集合，获取到每一个键</li>
+<li>根据键找值</li>
+</ul>
+</li>
+<li><p>B:案例演示</p>
+<ul>
+<li><p>Map集合的遍历之键找值</p>
+<pre><code>HashMap&lt;String, Integer&gt; hm = new HashMap&lt;&gt;();
+hm.put(&quot;张三&quot;, 23);
+hm.put(&quot;李四&quot;, 24);
+hm.put(&quot;王五&quot;, 25);
+hm.put(&quot;赵六&quot;, 26);
+
+/*Set&lt;String&gt; keySet = hm.keySet();            //获取集合中所有的键
+Iterator&lt;String&gt; it = keySet.iterator();    //获取迭代器
+while(it.hasNext()) {                        //判断单列集合中是否有元素
+    String key = it.next();                    //获取集合中的每一个元素,其实就是双列集合中的键
+    Integer value = hm.get(key);            //根据键获取值
+    System.out.println(key + &quot;=&quot; + value);    //打印键值对
+}*/
+
+for(String key : hm.keySet()) {                //增强for循环迭代双列集合第一种方式
+    System.out.println(key + &quot;=&quot; + hm.get(key));
+}
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<p>###18.04_集合框架(Map集合的遍历之键值对对象找键和值)</p>
+<ul>
+<li>A:键值对对象找键和值思路：<ul>
+<li>获取所有键值对对象的集合</li>
+<li>遍历键值对对象的集合，获取到每一个键值对对象</li>
+<li>根据键值对对象找键和值</li>
+</ul>
+</li>
+<li><p>B:案例演示</p>
+<ul>
+<li><p>Map集合的遍历之键值对对象找键和值</p>
+<pre><code>HashMap&lt;String, Integer&gt; hm = new HashMap&lt;&gt;();
+hm.put(&quot;张三&quot;, 23);
+hm.put(&quot;李四&quot;, 24);
+hm.put(&quot;王五&quot;, 25);
+hm.put(&quot;赵六&quot;, 26);
+/*Set&lt;Map.Entry&lt;String, Integer&gt;&gt; entrySet = hm.entrySet();    //获取所有的键值对象的集合
+Iterator&lt;Entry&lt;String, Integer&gt;&gt; it = entrySet.iterator();//获取迭代器
+while(it.hasNext()) {
+    Entry&lt;String, Integer&gt; en = it.next();                //获取键值对对象
+    String key = en.getKey();                                //根据键值对对象获取键
+    Integer value = en.getValue();                            //根据键值对对象获取值
+    System.out.println(key + &quot;=&quot; + value);
+}*/
+
+for(Entry&lt;String,Integer&gt; en : hm.entrySet()) {
+    System.out.println(en.getKey() + &quot;=&quot; + en.getValue());
+}
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<p>C:源码分析</p>
+<p>###18.05_集合框架(HashMap集合键是Student值是String的案例)</p>
+<ul>
+<li>A:案例演示<ul>
+<li>HashMap集合键是Student值是String的案例</li>
+</ul>
+</li>
+</ul>
+<p>###18.06_集合框架(LinkedHashMap的概述和使用)</p>
+<ul>
+<li>A:案例演示<ul>
+<li>LinkedHashMap的特点<ul>
+<li>底层是链表实现的，可以保证怎么存就怎么取</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>###18.07_集合框架(TreeMap集合键是Student值是String的案例)</p>
+<ul>
+<li>A:案例演示<ul>
+<li>TreeMap集合：键是Student，值是String的案例</li>
+</ul>
+</li>
+</ul>
+<p>###18.08_集合框架(统计字符串中每个字符出现的次数)</p>
 <ul>
 <li><p>A:案例演示</p>
 <ul>
-<li>需求：ArrayList去除集合中字符串的重复值(字符串的内容相同)</li>
-<li><p>思路：创建新集合方式</p>
-<pre><code>/**
- *  A:案例演示
- * 需求：ArrayList去除集合中字符串的重复值(字符串的内容相同)
- * 思路：创建新集合方式
- */
-public static void main(String[] args) {
-    ArrayList list = new ArrayList();
-    list.add(&quot;a&quot;);
-    list.add(&quot;a&quot;);
-    list.add(&quot;b&quot;);
-    list.add(&quot;b&quot;);
-    list.add(&quot;b&quot;);
-    list.add(&quot;c&quot;);
-    list.add(&quot;c&quot;);
-    list.add(&quot;c&quot;);
-    list.add(&quot;c&quot;);
+<li><p>需求：统计字符串中每个字符出现的次数</p>
+<pre><code>String str = &quot;aaaabbbcccccccccc&quot;;
+char[] arr = str.toCharArray();                        //将字符串转换成字符数组
+HashMap&lt;Character, Integer&gt; hm = new HashMap&lt;&gt;();    //创建双列集合存储键和值
 
-    System.out.println(list);
-    ArrayList newList = getSingle(list);
-    System.out.println(newList);
+for(char c : arr) {                                    //遍历字符数组
+    /*if(!hm.containsKey(c)) {                        //如果不包含这个键
+        hm.put(c, 1);                                //就将键和值为1添加
+    }else {                                            //如果包含这个键
+        hm.put(c, hm.get(c) + 1);                    //就将键和值再加1添加进来
+    }
+
+    //hm.put(c, !hm.containsKey(c) ? 1 : hm.get(c) + 1);
+    Integer i = !hm.containsKey(c) ? hm.put(c, 1) : hm.put(c, hm.get(c) + 1);
+            }
+
+for (Character key : hm.keySet()) {                    //遍历双列集合
+    System.out.println(key + &quot;=&quot; + hm.get(key));
+}
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<p>###18.09_集合框架(集合嵌套之HashMap嵌套HashMap)</p>
+<ul>
+<li>A:案例演示<ul>
+<li>集合嵌套之HashMap嵌套HashMap</li>
+</ul>
+</li>
+</ul>
+<p>###18.10_集合框架(HashMap和Hashtable的区别)</p>
+<ul>
+<li>A:面试题<ul>
+<li>HashMap和Hashtable的区别<ul>
+<li>Hashtable是JDK1.0版本出现的,是线程安全的,效率低,HashMap是JDK1.2版本出现的,是线程不安全的,效率高</li>
+<li>Hashtable不可以存储null键和null值,HashMap可以存储null键和null值</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>B:案例演示    <ul>
+<li>HashMap和Hashtable的区别</li>
+</ul>
+</li>
+</ul>
+<p>###18.11_集合框架(Collections工具类的概述和常见方法讲解)</p>
+<ul>
+<li>A:Collections类概述<ul>
+<li>针对集合操作 的工具类</li>
+</ul>
+</li>
+<li>B:Collections成员方法</li>
+<li><pre><code>public static &lt;T&gt; void sort(List&lt;T&gt; list)
+public static &lt;T&gt; int binarySearch(List&lt;?&gt; list,T key)
+public static &lt;T&gt; T max(Collection&lt;?&gt; coll)
+public static void reverse(List&lt;?&gt; list)
+public static void shuffle(List&lt;?&gt; list)
+</code></pre></li>
+</ul>
+<p>###18.12_集合框架(模拟斗地主洗牌和发牌)</p>
+<ul>
+<li><p>A:案例演示</p>
+<ul>
+<li><p>模拟斗地主洗牌和发牌，牌没有排序</p>
+<pre><code>//买一副扑克
+String[] num = {&quot;A&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;,&quot;6&quot;,&quot;7&quot;,&quot;8&quot;,&quot;9&quot;,&quot;10&quot;,&quot;J&quot;,&quot;Q&quot;,&quot;K&quot;};
+String[] color = {&quot;方片&quot;,&quot;梅花&quot;,&quot;红桃&quot;,&quot;黑桃&quot;};
+ArrayList&lt;String&gt; poker = new ArrayList&lt;&gt;();
+
+for(String s1 : color) {
+    for(String s2 : num) {
+        poker.add(s1.concat(s2));
+    }
 }
 
-/*
- * 去除重复
- * 1,返回ArrayList
- * 2,参数列表ArrayList
- */
-public static ArrayList getSingle(ArrayList list) {
-    ArrayList newList = new ArrayList();            //创建一个新集合
-    Iterator it = list.iterator();                    //获取迭代器
-    while(it.hasNext()) {                            //判断老集合中是否有元素
-        String temp = (String)it.next();            //将每一个元素临时记录住
-        if(!newList.contains(temp)) {                //如果新集合中不包含该元素
-            newList.add(temp);                        //将该元素添加到新集合中
+poker.add(&quot;小王&quot;);
+poker.add(&quot;大王&quot;);
+//洗牌
+Collections.shuffle(poker);
+//发牌
+ArrayList&lt;String&gt; gaojin = new ArrayList&lt;&gt;();
+ArrayList&lt;String&gt; longwu = new ArrayList&lt;&gt;();
+ArrayList&lt;String&gt; me = new ArrayList&lt;&gt;();
+ArrayList&lt;String&gt; dipai = new ArrayList&lt;&gt;();
+
+for(int i = 0; i &lt; poker.size(); i++) {
+    if(i &gt;= poker.size() - 3) {
+        dipai.add(poker.get(i));
+    }else if(i % 3 == 0) {
+        gaojin.add(poker.get(i));
+    }else if(i % 3 == 1) {
+        longwu.add(poker.get(i));
+    }else {
+        me.add(poker.get(i));
+    }
+}
+
+//看牌
+
+System.out.println(gaojin);
+System.out.println(longwu);
+System.out.println(me);
+System.out.println(dipai);
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<p>###18.13_集合框架(模拟斗地主洗牌和发牌并对牌进行排序的原理图解)</p>
+<ul>
+<li>A:画图演示<ul>
+<li>画图说明排序原理</li>
+</ul>
+</li>
+</ul>
+<p>###18.14_集合框架(模拟斗地主洗牌和发牌并对牌进行排序的代码实现)</p>
+<ul>
+<li>A:案例演示<ul>
+<li>模拟斗地主洗牌和发牌并对牌进行排序的代码实现</li>
+</ul>
+</li>
+<li><pre><code>    //买一副牌
+    String[] num = {&quot;3&quot;,&quot;4&quot;,&quot;5&quot;,&quot;6&quot;,&quot;7&quot;,&quot;8&quot;,&quot;9&quot;,&quot;10&quot;,&quot;J&quot;,&quot;Q&quot;,&quot;K&quot;,&quot;A&quot;,&quot;2&quot;};
+    String[] color = {&quot;方片&quot;,&quot;梅花&quot;,&quot;红桃&quot;,&quot;黑桃&quot;};
+    HashMap&lt;Integer, String&gt; hm = new HashMap&lt;&gt;();            //存储索引和扑克牌
+    ArrayList&lt;Integer&gt; list = new ArrayList&lt;&gt;();            //存储索引
+    int index = 0;                                            //索引的开始值
+    for(String s1 : num) {
+        for(String s2 : color) {
+            hm.put(index, s2.concat(s1));                    //将索引和扑克牌添加到HashMap中
+            list.add(index);                                //将索引添加到ArrayList集合中
+            index++;                ////自动装箱了，所以会改变index的值
         }
     }
-    return newList;                                    //将新集合返回
-}
-</code></pre><p>###16.02_集合框架(去除ArrayList中重复自定义对象元素)(掌握)</p>
-</li>
-</ul>
-</li>
-<li>A:案例演示<ul>
-<li>需求：ArrayList去除集合中自定义对象元素的重复值(对象的成员变量值相同)</li>
-</ul>
-</li>
-<li>B:注意事项<ul>
-<li>重写equals()方法<br>  contains方法判断是否包含,底层依赖的是equals方法.<br>  remove方法判断是否删除,底层依赖的是equals方法.</li>
-</ul>
-</li>
-</ul>
-<p>###16.03_集合框架(LinkedList的特有功能)(掌握)</p>
-<ul>
-<li>A:LinkedList类概述</li>
-<li><p>B:LinkedList类特有功能</p>
-<ul>
-<li>public void addFirst(E e)及addLast(E e)    在头部添加元素 或在尾部添加元素 </li>
-<li>public E getFirst()及getLast()</li>
-<li>public E removeFirst()及public E removeLast()</li>
-<li><p>public E get(int index);</p>
-<p>LinkedList：</p>
-<p>  *特有方法：　　</p>
-<pre><code>*addFirst();在头部添加元素      addLast();在尾部添加元素
-*getFirst(); getLast(); 获取元素但不删除元素。如果集合中没有元素，会出现NoSuchElementException
-*removeFirst();   removeLast(); 获取元素但是删除元素。如果集合中没有元素，会出现NoSuchElementException
+    hm.put(index, &quot;小王&quot;);
+    list.add(index);
+    index++;
+    hm.put(index, &quot;大王&quot;);
+    list.add(index);
+    //洗牌
+    Collections.shuffle(list);
+    //发牌
+    TreeSet&lt;Integer&gt; gaojin = new TreeSet&lt;&gt;();
+    TreeSet&lt;Integer&gt; longwu = new TreeSet&lt;&gt;();
+    TreeSet&lt;Integer&gt; me = new TreeSet&lt;&gt;();
+    TreeSet&lt;Integer&gt; dipai = new TreeSet&lt;&gt;();
 
-*在JDK1.6出现了替代方法
-*offerFirst(); offerLast();
-*peekFirst(); peekLast(); 获取元素，但是元素不被删除。如果集合中没有元素，会返回null
-*pollFirst(); pollLast(); 获取元素，但是元素被删除。如果集合中没有元素，会返回null
-</code></pre></li>
-</ul>
-</li>
-</ul>
-<p>###16.04_集合框架(栈和队列数据结构)(掌握)</p>
-<ul>
-<li>栈<ul>
-<li>先进后出 </li>
-</ul>
-</li>
-<li>队列<ul>
-<li>先进先出</li>
-</ul>
-</li>
-</ul>
-<p>###16.05_集合框架(用LinkedList模拟栈数据结构的集合并测试)(掌握)</p>
-<ul>
-<li><p>A:案例演示</p>
-<ul>
-<li>需求：请用LinkedList模拟栈数据结构的集合，并测试</li>
-<li>创建一个类将Linked中的方法封装</li>
-<li><pre><code>public class Stack {
-    private LinkedList list = new LinkedList();        //创建LinkedList对象
-
-    public void in(Object obj) {
-        list.addLast(obj);                            //封装addLast()方法
+    for(int i = 0; i &lt; list.size(); i++) {
+        if(i &gt;= list.size() - 3) {
+            dipai.add(list.get(i));                         //将list集合中的索引添加到TreeSet集合中会自动排序
+        }else if(i % 3 == 0) {
+            gaojin.add(list.get(i));
+        }else if(i % 3 == 1) {
+            longwu.add(list.get(i));
+        }else {
+            me.add(list.get(i));
+        }
     }
 
-    public Object out() {
-        return list.removeLast();                    //封装removeLast()方法
+    //看牌
+    lookPoker(&quot;高进&quot;, gaojin, hm);
+    lookPoker(&quot;龙五&quot;, longwu, hm);
+    lookPoker(&quot;冯佳&quot;, me, hm);
+    lookPoker(&quot;底牌&quot;, dipai, hm);
+
+}
+
+public static void lookPoker(String name,TreeSet&lt;Integer&gt; ts,HashMap&lt;Integer, String&gt; hm) {
+    System.out.print(name + &quot;的牌是:&quot;);
+    for (Integer index : ts) {
+        System.out.print(hm.get(index) + &quot; &quot;);
     }
 
-    public boolean isEmpty() {
-        return list.isEmpty();                        //封装isEmpty()方法
-    }
+    System.out.println();
 }
-</code></pre></li>
-</ul>
+</code></pre><p>###18.15_集合框架(泛型固定下边界)</p>
 </li>
+<li>? super E</li>
 </ul>
-<p>###16.06_集合框架(泛型概述和基本使用)(掌握)</p>
-<ul>
-<li>A:泛型概述</li>
-<li>B:泛型好处<ul>
-<li>提高安全性(将运行期的错误转换到编译期) </li>
-<li>省去强转的麻烦</li>
-</ul>
-</li>
-<li>C:泛型基本使用<ul>
-<li>&lt;&gt;中放的必须是引用数据类型 </li>
-</ul>
-</li>
-<li>D:泛型使用注意事项<ul>
-<li>前后的泛型必须一致,或者后面的泛型可以省略不写(1.7的新特性菱形泛型)  </li>
-</ul>
-</li>
-</ul>
-<p>###16.07_集合框架(ArrayList存储字符串和自定义对象并遍历泛型版)(掌握)</p>
-<ul>
-<li>A:案例演示<ul>
-<li>ArrayList存储字符串并遍历泛型版</li>
-</ul>
-</li>
-</ul>
-<p>###16.08_集合框架(泛型的由来)(了解)</p>
-<ul>
-<li>A:案例演示<ul>
-<li>泛型的由来:通过Object转型问题引入</li>
-<li>早期的Object类型可以接收任意的对象类型，但是在实际的使用中，会有类型转换的问题。也就存在这隐患，所以Java提供了泛型来解决这个安全问题。</li>
-</ul>
-</li>
-</ul>
-<p>###16.09_集合框架(泛型类的概述及使用)(了解)</p>
-<ul>
-<li>A:泛型类概述<t><ul>
-<li>把泛型定义在类上</li>
-</ul>
-</t></li>
-<li>B:定义格式<ul>
-<li>public class 类名&lt;泛型类型1,…&gt;</li>
-</ul>
-</li>
-<li>C:注意事项    <ul>
-<li>泛型类型必须是引用类型</li>
-</ul>
-</li>
-<li>D:案例演示<ul>
-<li>泛型类的使用</li>
-</ul>
-</li>
-</ul>
-<p>###16.10_集合框架(泛型方法的概述和使用)(了解)</p>
-<ul>
-<li>A:泛型方法概述<ul>
-<li>把泛型定义在方法上</li>
-</ul>
-</li>
-<li>B:定义格式    <ul>
-<li>public &lt;泛型类型&gt; 返回类型 方法名(泛型类型 变量名)</li>
-</ul>
-</li>
-<li>C:案例演示<ul>
-<li>泛型方法的使用</li>
-</ul>
-</li>
-</ul>
-<p>###16.11_集合框架(泛型接口的概述和使用)(了解)</p>
-<ul>
-<li>A:泛型接口概述<ul>
-<li>把泛型定义在接口上</li>
-</ul>
-</li>
-<li>B:定义格式    <ul>
-<li>public interface 接口名&lt;泛型类型&gt;</li>
-</ul>
-</li>
-<li>C:案例演示<ul>
-<li>泛型接口的使用</li>
-</ul>
-</li>
-</ul>
-<p>###16.12_集合框架(泛型高级之通配符)(了解)</p>
-<ul>
-<li>A:泛型通配符&lt;?&gt;<ul>
-<li>任意类型，如果没有明确，那么就是Object以及任意的Java类了</li>
-</ul>
-</li>
-<li>B:? extends E<ul>
-<li>向下限定，E及其子类</li>
-</ul>
-</li>
-<li><p>C:? super E</p>
-<ul>
-<li><p>向上限定，E及其父类</p>
-<p>List&lt;?&gt; list = new ArrayList<integer>();            //当右边的泛型是不确定时,左边可以指定为?</integer></p>
-</li>
-</ul>
-</li>
-</ul>
-<p>###16.13_集合框架(增强for的概述和使用)(掌握)</p>
-<ul>
-<li>A:增强for概述（底层是用Iterator迭代器实现的）<ul>
-<li>简化数组和Collection集合的遍历</li>
-</ul>
-</li>
-<li>B:格式：</li>
-<li><pre><code>for(元素数据类型 变量 : 数组或者Collection集合) {
-    使用变量即可，该变量就是元素
-}
-</code></pre></li>
-<li>C:案例演示<ul>
-<li>数组，集合存储元素用增强for遍历</li>
-</ul>
-</li>
-<li>D:好处<ul>
-<li>简化遍历</li>
-</ul>
-</li>
-</ul>
-<p>###16.14_集合框架(ArrayList存储字符串和自定义对象并遍历增强for版)(掌握)</p>
-<ul>
-<li><p>A:案例演示</p>
-<ul>
-<li>ArrayList存储字符串并遍历增强for版</li>
-<li><pre><code>ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;();
-list.add(&quot;a&quot;);
-list.add(&quot;b&quot;);
-list.add(&quot;c&quot;);
-list.add(&quot;d&quot;);
-
-for(String s : list) {
-    System.out.println(s);
-}
-</code></pre><p>###16.15_集合框架(三种迭代的能否删除)(掌握)</p>
-</li>
-</ul>
-</li>
-<li>普通for循环,可以删除,但是索引要–  （因为删除数组中的一个元素后后面的元素会向上补齐）</li>
-<li>迭代器,可以删除,但是必须使用迭代器自身的remove方法,否则会出现并发修改异常</li>
-<li>增强for循环不能删除，（增强for的底层依赖的是Iterator迭代器，会发生并发修改异常）</li>
-</ul>
-<p>###16.16_集合框架(静态导入的概述和使用)(掌握)</p>
-<ul>
-<li>A:静态导入概述</li>
-<li>B:格式：<ul>
-<li>import static 包名….类名.方法名;</li>
-<li>可以直接导入到方法的级别</li>
-</ul>
-</li>
-<li>C:注意事项<ul>
-<li>方法必须是静态的,如果有多个同名的静态方法，容易不知道使用谁?这个时候要使用，必须加前缀。由此可见，意义不大，所以一般不用，但是要能看懂。</li>
-</ul>
-</li>
-</ul>
-<p>###16.17_集合框架(可变参数的概述和使用)(掌握)</p>
-<ul>
-<li>A:可变参数概述<ul>
-<li>定义方法的时候不知道该定义多少个参数</li>
-</ul>
-</li>
-<li>B:格式<ul>
-<li>修饰符 返回值类型 方法名(数据类型…  变量名){}</li>
-</ul>
-</li>
-<li>C:注意事项：<ul>
-<li>这里的变量其实是一个数组（可变参数其实是数组。长度可变）</li>
-<li>如果一个方法有可变参数，并且有多个参数，那么，可变参数肯定是最后一个</li>
-</ul>
-</li>
-</ul>
-<p>###16.18_集合框架(Arrays工具类的asList()方法的使用)(掌握)</p>
-<ul>
-<li><p>A:案例演示</p>
-<ul>
-<li><p>Arrays工具类的asList()方法的使用<br>  *数组转换成集合</p>
-<ul>
-<li><p>数组转换成集合虽然不能增加或减少元素,但是可以用集合的思想操作数组,也就是说可以使用其他集合中的方法<br>List<string> list = Arrays.asList(arr);                //将数组转换成集合<br>list.add(“d”);                                        //不能添加</string></p>
-<p>  <strong>基本数据类型的数组转换成集合,会将整个数组当作一个对象转换
-  </strong>将数组转换成集合,数组必须是引用数据类型</p>
-<p>  <strong>当集合转换数组时,数组长度如果是小于等于集合的size时,转换后的数组长度等于集合的size
-  </strong>如果数组的长度大于了size,分配的数组长度就和你指定的长度一样</p>
-</li>
-</ul>
-</li>
-<li>Collection中toArray(T[] a)泛型版的集合转数组</li>
-</ul>
-</li>
-</ul>
-<p>###16.19_集合框架(集合嵌套之ArrayList嵌套ArrayList)(掌握)</p>
-<ul>
-<li>A:案例演示<ul>
-<li>集合嵌套之ArrayList嵌套ArrayList</li>
-</ul>
-</li>
-</ul>
-<p>###16.20_day16总结</p>
+<p>###18.16_day18总结</p>
 <ul>
 <li>把今天的知识点总结一遍。</li>
 </ul>
@@ -704,7 +718,7 @@ for(String s : list) {
       
         <div class="post-tags">
           
-            <a href="/tags/ArrayList，泛型/" rel="tag"># ArrayList，泛型</a>
+            <a href="/tags/Map/" rel="tag"># Map</a>
           
         </div>
       
@@ -717,8 +731,8 @@ for(String s : list) {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/10/day15-List笔记/" rel="next" title="List">
-                <i class="fa fa-chevron-left"></i> List
+              <a href="/2017/09/12/day17-Set笔记/" rel="next" title="Set">
+                <i class="fa fa-chevron-left"></i> Set
               </a>
             
           </div>
@@ -727,8 +741,8 @@ for(String s : list) {
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/09/12/day17-Set笔记/" rel="prev" title="Set">
-                Set <i class="fa fa-chevron-right"></i>
+              <a href="/2017/10/13/用通俗语言说restful/" rel="prev" title="通俗地讲RESTFUL">
+                通俗地讲RESTFUL <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
