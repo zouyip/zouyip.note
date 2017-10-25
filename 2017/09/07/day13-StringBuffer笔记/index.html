@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="StringBuffer," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="###13.01_常见对象(StringBuffer类的概述)  A:StringBuffer类概述 通过JDK提供的API，查看StringBuffer类的说明 线程安全的可变字符序列    B:StringBuffer和String的区别 String是一个不可变的字符序列 StringBuffer是一个可变的字符序列     ###13.02_常见对象(StringBuffer类的构造方法)">
+<meta name="keywords" content="StringBuffer">
+<meta property="og:type" content="article">
+<meta property="og:title" content="StringBuffer类">
+<meta property="og:url" content="http://zouyip.github.io/2017/09/07/day13-StringBuffer笔记/index.html">
+<meta property="og:site_name" content="菜鸟的心酸历程">
+<meta property="og:description" content="###13.01_常见对象(StringBuffer类的概述)  A:StringBuffer类概述 通过JDK提供的API，查看StringBuffer类的说明 线程安全的可变字符序列    B:StringBuffer和String的区别 String是一个不可变的字符序列 StringBuffer是一个可变的字符序列     ###13.02_常见对象(StringBuffer类的构造方法)">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-25T01:37:24.518Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="StringBuffer类">
+<meta name="twitter:description" content="###13.01_常见对象(StringBuffer类的概述)  A:StringBuffer类概述 通过JDK提供的API，查看StringBuffer类的说明 线程安全的可变字符序列    B:StringBuffer和String的区别 String是一个不可变的字符序列 StringBuffer是一个可变的字符序列     ###13.02_常见对象(StringBuffer类的构造方法)">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://zouyip.github.io/2017/09/07/day13-StringBuffer笔记/"/>
+
+
+
+
+
+  <title>StringBuffer类 | 菜鸟的心酸历程</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?5da72f9d0dfb00924337c58fbc4ef3dd";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">菜鸟的心酸历程</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">zyp's blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags 标签页" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about   关于页面" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html 公益 404" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zouyip.github.io/2017/09/07/day13-StringBuffer笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zou Yipeng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="菜鸟的心酸历程">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">StringBuffer类</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-07T11:50:30+08:00">
+                2017-09-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java基础/" itemprop="url" rel="index">
+                    <span itemprop="name">java基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>###13.01_常见对象(StringBuffer类的概述)</p>
+<ul>
+<li>A:StringBuffer类概述<ul>
+<li>通过JDK提供的API，查看StringBuffer类的说明</li>
+<li>线程安全的可变字符序列 </li>
+</ul>
+</li>
+<li>B:StringBuffer和String的区别<ul>
+<li>String是一个不可变的字符序列</li>
+<li>StringBuffer是一个可变的字符序列 </li>
+</ul>
+</li>
+</ul>
+<p>###13.02_常见对象(StringBuffer类的构造方法)</p>
+<ul>
+<li>A:StringBuffer的构造方法：<ul>
+<li>public StringBuffer():无参构造方法</li>
+<li>public StringBuffer(int capacity):指定容量的字符串缓冲区对象</li>
+<li>public StringBuffer(String str):指定字符串内容的字符串缓冲区对象</li>
+</ul>
+</li>
+<li>B:StringBuffer的方法：<ul>
+<li>public int capacity()：返回当前容量。    理论值(不掌握)</li>
+<li>public int length():返回长度（字符数）。 实际值</li>
+</ul>
+</li>
+<li>C:案例演示<ul>
+<li>构造方法和长度方法的使用</li>
+</ul>
+</li>
+</ul>
+<p>###13.03_常见对象(StringBuffer的添加功能)</p>
+<ul>
+<li><p>A:StringBuffer的添加功能</p>
+<ul>
+<li>public StringBuffer append(String str):<ul>
+<li>可以把任意类型数据添加到字符串缓冲区里面,并返回字符串缓冲区本身</li>
+</ul>
+</li>
+<li><p>public StringBuffer insert(int offset,String str):</p>
+<ul>
+<li>在指定位置把任意类型的数据插入到字符串缓冲区里面,并返回字符串缓冲区本身</li>
+</ul>
+<p>StringBuffer是字符串缓冲区,当new的时候是在堆内存创建了一个对象,底层是一个长度为16的字符数组<br>  当调用添加的方法时,不会再重新创建对象,在不断向原缓冲区添加字符</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>###13.04_常见对象(StringBuffer的删除功能)</p>
+<ul>
+<li>A:StringBuffer的删除功能<ul>
+<li>public StringBuffer deleteCharAt(int index):<ul>
+<li>删除指定位置的字符，并返回本身</li>
+</ul>
+</li>
+<li>public StringBuffer delete(int start,int end):<ul>
+<li>删除从指定位置开始指定位置结束的内容，并返回本身</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>###13.05_常见对象(StringBuffer的替换和反转功能)</p>
+<ul>
+<li>A:StringBuffer的替换功能<ul>
+<li>public StringBuffer replace(int start,int end,String str):<ul>
+<li>从start开始到end用str替换</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>B:StringBuffer的反转功能<ul>
+<li>public StringBuffer reverse():<ul>
+<li>字符串反转</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>###13.06_常见对象(StringBuffer的截取功能及注意事项)</p>
+<ul>
+<li>A:StringBuffer的截取功能<ul>
+<li>public String substring(int start):<ul>
+<li>从指定位置截取到末尾</li>
+</ul>
+</li>
+<li>public String substring(int start,int end):<ul>
+<li>截取从指定位置开始到结束位置，包括开始位置，不包括结束位置</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>B:注意事项<ul>
+<li>注意:返回值类型不再是StringBuffer本身</li>
+</ul>
+</li>
+</ul>
+<p>###13.07_常见对象(StringBuffer和String的相互转换)</p>
+<ul>
+<li>A:String – StringBuffer<ul>
+<li>a:通过构造方法</li>
+<li>b:通过append()方法</li>
+</ul>
+</li>
+<li>B:StringBuffer – String<ul>
+<li>a:通过构造方法</li>
+<li>b:通过toString()方法</li>
+<li>c:通过subString(0,length);</li>
+</ul>
+</li>
+</ul>
+<p>###13.08_常见对象(把数组转成字符串)</p>
+<ul>
+<li><p>A:案例演示</p>
+<ul>
+<li>需求：把数组中的数据按照指定个格式拼接成一个字符串</li>
+<li><pre><code>举例：
+    int[] arr = {1,2,3};    
+输出结果：
+    &quot;[1, 2, 3]&quot;
+
+用StringBuffer的功能实现
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<p>###13.09_常见对象(字符串反转)</p>
+<ul>
+<li>A:案例演示</li>
+<li><pre><code>需求：把字符串反转
+    举例：键盘录入&quot;abc&quot;        
+    输出结果：&quot;cba&quot;
+
+用StringBuffer的功能实现    
+</code></pre></li>
+</ul>
+<p>###13.10_常见对象(StringBuffer和StringBuilder的区别)</p>
+<ul>
+<li>A:StringBuilder的概述<ul>
+<li>通过查看API了解一下StringBuilder类</li>
+</ul>
+</li>
+<li><p>B:面试题</p>
+<ul>
+<li>String,StringBuffer,StringBuilder的区别</li>
+<li>StringBuffer和StringBuilder的区别</li>
+<li>StringBuffer是jdk1.0版本的,是线程安全的,效率低</li>
+<li><p>StringBuilder是jdk1.5版本的,是线程不安全的,效率高</p>
+</li>
+<li><p>String和StringBuffer,StringBuilder的区别</p>
+</li>
+<li>String是一个不可变的字符序列</li>
+<li>StringBuffer,StringBuilder是可变的字符序列</li>
+</ul>
+</li>
+</ul>
+<p>###13.11_常见对象(String和StringBuffer分别作为参数传递)</p>
+<ul>
+<li>A:形式参数问题<ul>
+<li>String作为参数传递</li>
+<li>StringBuffer作为参数传递 </li>
+</ul>
+</li>
+<li>B:案例演示<ul>
+<li>String和StringBuffer分别作为参数传递问题</li>
+</ul>
+</li>
+</ul>
+<p>###13.12_常见对象(数组高级冒泡排序原理图解)</p>
+<ul>
+<li>A:画图演示</li>
+<li><pre><code>需求：
+    数组元素：{24, 69, 80, 57, 13}
+    请对数组元素进行排序。
+
+    冒泡排序
+        相邻元素两两比较，大的往后放，第一次完毕，最大值出现在了最大索引处
+</code></pre></li>
+</ul>
+<p>###13.13_常见对象(数组高级冒泡排序代码实现)</p>
+<ul>
+<li>A:案例演示<ul>
+<li>数组高级冒泡排序代码</li>
+</ul>
+</li>
+</ul>
+<p>###13.14_常见对象(数组高级选择排序原理图解)</p>
+<ul>
+<li><p>A:画图演示</p>
+<ul>
+<li><p>需求：</p>
+<ul>
+<li>数组元素：{24, 69, 80, 57, 13}</li>
+<li><p>请对数组元素进行排序。</p>
+</li>
+<li><p>选择排序</p>
+<ul>
+<li>从0索引开始，依次和后面元素比较，小的往前放，第一次完毕，最小值出现在了最小索引处</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>###13.15_常见对象(数组高级选择排序代码实现)</p>
+<ul>
+<li>A:案例演示<ul>
+<li>数组高级选择排序代码</li>
+</ul>
+</li>
+</ul>
+<p>###13.16_常见对象(数组高级二分查找原理图解)</p>
+<ul>
+<li>A:画图演示<ul>
+<li>二分查找  </li>
+<li>前提：数组元素有序</li>
+</ul>
+</li>
+</ul>
+<p>###13.17_常见对象(数组高级二分查找代码实现及注意事项)</p>
+<ul>
+<li>A:案例演示<ul>
+<li>数组高级二分查找代码</li>
+</ul>
+</li>
+<li>B:注意事项<ul>
+<li>如果数组无序，就不能使用二分查找。<ul>
+<li>因为如果你排序了，但是你排序的时候已经改变了我最原始的元素索引。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>####总结：循环嵌套的排序算法中外层循环控制的是比较的次数。</p>
+<p>###13.18_常见对象(Arrays类的概述和方法使用)</p>
+<ul>
+<li>A:Arrays类概述<ul>
+<li>针对数组进行操作的工具类。</li>
+<li>提供了排序，查找等功能。</li>
+</ul>
+</li>
+<li>B:成员方法<ul>
+<li>public static String toString(int[] a)</li>
+<li>public static void sort(int[] a)</li>
+<li>public static int binarySearch(int[] a,int key)</li>
+</ul>
+</li>
+</ul>
+<p>###13.19_常见对象(基本类型包装类的概述)</p>
+<ul>
+<li>A:为什么会有基本类型包装类<ul>
+<li>将基本数据类型封装成对象的好处在于可以在对象中定义更多的功能方法操作该数据。</li>
+</ul>
+</li>
+<li>B:常用操作<ul>
+<li>常用的操作之一：用于基本数据类型与字符串之间的转换。</li>
+</ul>
+</li>
+<li>C:基本类型和包装类的对应</li>
+<li><pre><code>byte             Byte
+short            Short
+int                Integer
+long            Long
+float            Float
+double            Double
+char            Character
+boolean            Boolean
+</code></pre></li>
+</ul>
+<p>###13.20_常见对象(Integer类的概述和构造方法)</p>
+<ul>
+<li><p>A:Integer类概述</p>
+<ul>
+<li><p>通过JDK提供的API，查看Integer类的说明</p>
+</li>
+<li><p>Integer 类在对象中包装了一个基本类型 int 的值,</p>
+</li>
+<li>该类提供了多个方法，能在 int 类型和 String 类型之间互相转换，</li>
+<li>还提供了处理 int 类型时非常有用的其他一些常量和方法</li>
+</ul>
+</li>
+<li>B:构造方法<ul>
+<li>public Integer(int value)</li>
+<li>public Integer(String s)<br>  //Integer i2 = new Integer(“abc”);            //java.lang.NumberFormatException数字格式异常<br>  //System.out.println(i2);                    //因为abc不是数字字符串,所以转换会报错</li>
+</ul>
+</li>
+<li>C:案例演示<ul>
+<li>使用构造方法创建对象</li>
+</ul>
+</li>
+</ul>
+<p>###13.21_常见对象(String和int类型的相互转换)</p>
+<ul>
+<li>A:int – String<ul>
+<li>a:和””进行拼接</li>
+<li>b:public static String valueOf(int i)</li>
+<li>c:int – Integer – String(Integer类的toString方法())</li>
+<li>d:public static String toString(int i)(Integer类的静态方法)</li>
+</ul>
+</li>
+<li>B:String – int<ul>
+<li>a:String – Integer – int</li>
+<li>public static int parseInt(String s)</li>
+</ul>
+</li>
+</ul>
+<p>###13.22_常见对象(JDK5的新特性自动装箱和拆箱)</p>
+<ul>
+<li>A:JDK5的新特性<ul>
+<li>自动装箱：把基本类型转换为包装类类型</li>
+<li>自动拆箱：把包装类类型转换为基本类型</li>
+</ul>
+</li>
+<li><p>B:案例演示</p>
+<ul>
+<li><p>JDK5的新特性自动装箱和拆箱</p>
+</li>
+<li><p>Integer ii = 100;</p>
+</li>
+<li>ii += 200;</li>
+</ul>
+</li>
+<li>C:注意事项<ul>
+<li>在使用时，Integer  x = null;代码就会出现NullPointerException。</li>
+<li>建议先判断是否为null，然后再使用。</li>
+</ul>
+</li>
+</ul>
+<p>###13.23_常见对象(Integer的面试题)</p>
+<ul>
+<li>A:Integer的面试题</li>
+<li><pre><code>看程序写结果
+
+Integer i1 = new Integer(97);
+Integer i2 = new Integer(97);
+System.out.println(i1 == i2);        //false
+System.out.println(i1.equals(i2));    //true
+System.out.println(&quot;-----------&quot;);
+
+Integer i3 = new Integer(197);
+Integer i4 = new Integer(197);
+System.out.println(i3 == i4);        //false
+System.out.println(i3.equals(i4));    //true
+System.out.println(&quot;-----------&quot;);
+
+Integer i5 = 97;
+Integer i6 = 97;
+System.out.println(i5 == i6);        //true
+System.out.println(i5.equals(i6));    //true 
+System.out.println(&quot;-----------&quot;);
+
+Integer i7 = 197;
+Integer i8 = 197;
+System.out.println(i7 == i8);        //false
+System.out.println(i7.equals(i8));    //true    
+</code></pre></li>
+<li><p>-128到127是byte的取值范围,如果在这个取值范围内,自动装箱就不会新创建对象,而是从常量池中获取</p>
+<pre><code>* 如果超过了byte取值范围就会再新创建对象
+* 
+* public static Integer valueOf(int i) {
+       assert IntegerCache.high &gt;= 127;
+       if (i &gt;= IntegerCache.low &amp;&amp; i &lt;= IntegerCache.high)            //i&gt;= -128 &amp;&amp; i &lt;= 127
+           return IntegerCache.cache[i + (-IntegerCache.low)];
+       return new Integer(i);
+   }
+*/
+</code></pre><p>  }</p>
+</li>
+</ul>
+<p>}</p>
+<p>###13.24_day13总结</p>
+<ul>
+<li>把今天的知识点总结一遍。</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/StringBuffer/" rel="tag"># StringBuffer</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/06/day12-String笔记/" rel="next" title="String类概述">
+                <i class="fa fa-chevron-left"></i> String类概述
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/13/用通俗语言说restful/" rel="prev" title="通俗地讲RESTFUL">
+                通俗地讲RESTFUL <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="Zou Yipeng" />
+            
+              <p class="site-author-name" itemprop="name">Zou Yipeng</p>
+              <p class="site-description motion-element" itemprop="description">欢迎来到Zou Yipeng的blog,让我们一起学习吧！</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/zouyip" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:1281797783@qq.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zou Yipeng</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

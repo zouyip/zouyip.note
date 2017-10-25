@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="RESTFUL," />
+  <meta name="keywords" content="内部类," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="####实现了REST规范的Web API就叫RESTful API。 简单来说：就是用url定位资源，用http描述来操作资源。 web是什么：分布式信息系统为超文本文件和其他对象（资源）提供访问入口。 资源是web架构的关键点，需要3个操作：识别，表示，交互。uri(统一资源标识符)来识别资源，html.xml,图片，视频来表示资源，通过协议与资源交互。 所以rest就是选择通过使用http协">
-<meta name="keywords" content="RESTFUL">
+<meta name="description" content="###10.01_面向对象(package关键字的概述及作用)(了解)  A:为什么要有包 将字节码(.class)进行分类存放  包其实就是文件夹   B:包的概述   举例： 学生：增加，删除，修改，查询 老师：增加，删除，修改，查询 ...  方案1：按照功能分     com.heima.add         AddStudent         AddTeacher     com.h">
+<meta name="keywords" content="内部类">
 <meta property="og:type" content="article">
-<meta property="og:title" content="通俗地讲RESTFUL">
-<meta property="og:url" content="http://zouyip.github.io/2017/10/13/用通俗语言说restful/index.html">
+<meta property="og:title" content="内部类">
+<meta property="og:url" content="http://zouyip.github.io/2017/09/05/day10-内部类笔记/index.html">
 <meta property="og:site_name" content="菜鸟的心酸历程">
-<meta property="og:description" content="####实现了REST规范的Web API就叫RESTful API。 简单来说：就是用url定位资源，用http描述来操作资源。 web是什么：分布式信息系统为超文本文件和其他对象（资源）提供访问入口。 资源是web架构的关键点，需要3个操作：识别，表示，交互。uri(统一资源标识符)来识别资源，html.xml,图片，视频来表示资源，通过协议与资源交互。 所以rest就是选择通过使用http协">
+<meta property="og:description" content="###10.01_面向对象(package关键字的概述及作用)(了解)  A:为什么要有包 将字节码(.class)进行分类存放  包其实就是文件夹   B:包的概述   举例： 学生：增加，删除，修改，查询 老师：增加，删除，修改，查询 ...  方案1：按照功能分     com.heima.add         AddStudent         AddTeacher     com.h">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-25T01:37:47.736Z">
+<meta property="og:updated_time" content="2017-10-25T01:36:55.341Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="通俗地讲RESTFUL">
-<meta name="twitter:description" content="####实现了REST规范的Web API就叫RESTful API。 简单来说：就是用url定位资源，用http描述来操作资源。 web是什么：分布式信息系统为超文本文件和其他对象（资源）提供访问入口。 资源是web架构的关键点，需要3个操作：识别，表示，交互。uri(统一资源标识符)来识别资源，html.xml,图片，视频来表示资源，通过协议与资源交互。 所以rest就是选择通过使用http协">
+<meta name="twitter:title" content="内部类">
+<meta name="twitter:description" content="###10.01_面向对象(package关键字的概述及作用)(了解)  A:为什么要有包 将字节码(.class)进行分类存放  包其实就是文件夹   B:包的概述   举例： 学生：增加，删除，修改，查询 老师：增加，删除，修改，查询 ...  方案1：按照功能分     com.heima.add         AddStudent         AddTeacher     com.h">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://zouyip.github.io/2017/10/13/用通俗语言说restful/"/>
+  <link rel="canonical" href="http://zouyip.github.io/2017/09/05/day10-内部类笔记/"/>
 
 
 
 
 
-  <title>通俗地讲RESTFUL | 菜鸟的心酸历程</title>
+  <title>内部类 | 菜鸟的心酸历程</title>
   
 
 
@@ -283,7 +283,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zouyip.github.io/2017/10/13/用通俗语言说restful/">
+    <link itemprop="mainEntityOfPage" href="http://zouyip.github.io/2017/09/05/day10-内部类笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zou Yipeng">
@@ -300,7 +300,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">通俗地讲RESTFUL</h1>
+          <h1 class="post-title" itemprop="name headline">内部类</h1>
         
 
         <div class="post-meta">
@@ -312,8 +312,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-13T14:20:33+08:00">
-                2017-10-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-05T14:50:33+08:00">
+                2017-09-05
               </time>
             
 
@@ -335,8 +335,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/RESTFUL/" itemprop="url" rel="index">
-                    <span itemprop="name">RESTFUL</span>
+                  <a href="/categories/java基础/" itemprop="url" rel="index">
+                    <span itemprop="name">java基础</span>
                   </a>
                 </span>
 
@@ -372,25 +372,303 @@
       
 
       
-        <p>####实现了REST规范的Web API就叫RESTful API。</p>
-<p>简单来说：就是用url定位资源，用http描述来操作资源。</p>
-<p>web是什么：分布式信息系统为超文本文件和其他对象（资源）提供访问入口。</p>
-<p>资源是web架构的关键点，需要3个操作：识别，表示，交互。uri(统一资源标识符)来识别资源，html.xml,图片，视频来表示资源，通过协议与资源交互。</p>
-<p>所以rest就是选择通过使用http协议和uri,对资源进行CRUD增删改查操作。</p>
-<p>rest协议是面向资源的，soap是面向服务的，假如要管理一些用户，使用rest协议将用户看做是一种资源：</p>
-<p>get  /users/{userid}  获取userid对应的user信息。     post   /users  创建一个新的user。   put  /users/{userid}  更改userid对应的user信息.</p>
-<p>使用soap将对用户的操作看做成服务：</p>
-<p>我们大部分项目中目前使用的是RPC风格的服务：</p>
-<p>   rpc只能用服务本身提供的方法和接口与服务器交互，整个过程中，请求，响应和方法对于客户端都是不可见的，异构的客户端很难与服务器通信，也很难解析服务器的响应请求。</p>
-<pre><code>restful风格的服务：
+        <p>###10.01_面向对象(package关键字的概述及作用)(了解)</p>
+<ul>
+<li>A:为什么要有包<ul>
+<li>将字节码(.class)进行分类存放 </li>
+<li>包其实就是文件夹</li>
+</ul>
+</li>
+<li>B:包的概述</li>
+<li><p>  举例：</p>
+<pre><code>学生：增加，删除，修改，查询
+老师：增加，删除，修改，查询
+...
 
-整个过程采用http方法发生请求，数据采用标准格式，基于统一接口和通用载体，即使客户端和服务器采用不同的技术构建，也不会影响通信。
-</code></pre><p>顺便说下SOA和微服务的区别：</p>
-<p>SOA的提出是在企业计算领域，就是要将紧耦合的系统，划分为面向业务的，粗粒度，松耦合，无状态的服务。服务发布出来供其他服务调用，一组互相依赖的服务就构成了SOA架构下的系统。</p>
-<p>我们知道企业计算领域，如果不是交易系统的话，并发量都不是很大的，所以大多数情况下，一台服务器就容纳将许许多多的服务，这些服务采用统一的基础设施，可能都运行在一个应用服务器的进程中。虽然说是面向服务了，但还是单一的系统。</p>
-<p>微服务：</p>
-<p>不同的子系统采用自己的架构，那么各个服务运行自己的Web容器中，当需要增加计算能力的时候，只需要增加这个子系统或服务的实例就好了，当升级的时候，可以不影响别的子系统。这种组织方式大体上就被称作微服务架构。</p>
-<p>微服务与SOA相比，更强调分布式系统的特性，比如横向伸缩性，服务发现，负载均衡，故障转移，高可用。互联网开发对服务治理提出了更多的要求，比如多版本，比如灰度升级，比如服务降级，比如分布式跟踪，这些都是在SOA实践中重视不够的。</p>
+方案1：按照功能分
+    com.heima.add
+        AddStudent
+        AddTeacher
+    com.heima.delete
+        DeleteStudent
+        DeleteTeacher
+    com.heima.update
+        UpdateStudent
+        UpdateTeacher
+    com.heima.find
+        FindStudent
+        FindTeacher
+
+方案2：按照模块分
+    com.heima.teacher
+        AddTeacher
+        DeleteTeacher
+        UpdateTeacher
+        FindTeacher
+    com.heima.student
+        AddStudent
+        DeleteStudent
+        UpdateStudent
+        FindStudent
+</code></pre><p>###10.02_面向对象(包的定义及注意事项)(掌握)</p>
+</li>
+<li>A:定义包的格式<ul>
+<li>package 包名;</li>
+<li>多级包用.分开即可</li>
+</ul>
+</li>
+<li>B:定义包的注意事项<ul>
+<li>A:package语句必须是程序的第一条可执行的代码</li>
+<li>B:package语句在一个java文件中只能有一个</li>
+<li>C:如果没有package，默认表示无包名</li>
+</ul>
+</li>
+<li>C:案例演示<ul>
+<li>包的定义及注意事项</li>
+</ul>
+</li>
+</ul>
+<p>###10.03_面向对象(带包的类编译和运行)(掌握)</p>
+<ul>
+<li>A:如何编译运行带包的类<ul>
+<li>a:javac编译的时候带上-d即可<ul>
+<li>javac -d . HelloWorld.java</li>
+</ul>
+</li>
+<li>b:通过java命令执行。<ul>
+<li>java 包名.HellWord<br>###10.04_面向对象(不同包下类之间的访问)(掌握)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>A:案例演示<ul>
+<li>不同包下类之间的访问</li>
+</ul>
+</li>
+</ul>
+<p>###10.05_面向对象(import关键字的概述和使用)(掌握)</p>
+<ul>
+<li>A:案例演示<ul>
+<li>为什么要有import<ul>
+<li>其实就是让有包的类对调用者可见,不用写全类名了 </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>B:导包格式<ul>
+<li>import 包名;</li>
+<li>注意：</li>
+<li>这种方式导入是到类的名称。</li>
+<li>虽然可以最后写*，但是不建议。</li>
+</ul>
+</li>
+<li>C:package,import,class有没有顺序关系(面试题)</li>
+</ul>
+<p>###10.06_面向对象(四种权限修饰符的测试)(掌握)</p>
+<ul>
+<li>A:案例演示<ul>
+<li>四种权限修饰符</li>
+</ul>
+</li>
+<li>B:结论</li>
+<li><pre><code>            本类     同一个包下(子类和无关类)    不同包下(子类)    不同包下(无关类)
+private     Y        
+默认            Y        Y
+protected    Y        Y                            Y
+public        Y        Y                            Y                Y
+</code></pre></li>
+</ul>
+<p>###10.07_面向对象(类及其组成所使用的常见修饰符)(掌握)</p>
+<ul>
+<li>A:修饰符：<ul>
+<li>权限修饰符：private，默认的，protected，public</li>
+<li>状态修饰符：static，final</li>
+<li>抽象修饰符：abstract</li>
+</ul>
+</li>
+<li><p>B:类：</p>
+<ul>
+<li>权限修饰符：默认修饰符，public</li>
+<li>状态修饰符：final</li>
+<li><p>抽象修饰符：abstract</p>
+</li>
+<li><p>用的最多的就是：public</p>
+</li>
+</ul>
+</li>
+<li><p>C:成员变量：</p>
+<ul>
+<li>权限修饰符：private，默认的，protected，public</li>
+<li><p>状态修饰符：static，final</p>
+</li>
+<li><p>用的最多的就是：private</p>
+</li>
+</ul>
+</li>
+<li><p>D:构造方法：</p>
+<ul>
+<li><p>权限修饰符：private，默认的，protected，public</p>
+</li>
+<li><p>用的最多的就是：public</p>
+</li>
+</ul>
+</li>
+<li><p>E:成员方法：</p>
+<ul>
+<li>权限修饰符：private，默认的，protected，public</li>
+<li>状态修饰符：static，final</li>
+<li><p>抽象修饰符：abstract</p>
+</li>
+<li><p>用的最多的就是：public</p>
+</li>
+</ul>
+</li>
+<li><p>F:除此以外的组合规则：</p>
+<ul>
+<li>成员变量：public static final</li>
+<li>成员方法：<ul>
+<li>public static </li>
+<li>public abstract</li>
+<li>public final</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>###10.08_面向对象(内部类概述和访问特点)(了解)</p>
+<ul>
+<li>A:内部类概述</li>
+<li>B:内部类访问特点<ul>
+<li>a:内部类可以直接访问外部类的成员，包括私有。</li>
+<li>b:外部类要访问内部类的成员，必须创建对象。</li>
+<li>外部类名.内部类名 对象名 = 外部类对象.内部类对象;（这种表述是为了让人看懂类中有内部类）</li>
+</ul>
+</li>
+<li>C:案例演示<ul>
+<li>内部类极其访问特点</li>
+</ul>
+</li>
+</ul>
+<p>###10.09_面向对象(成员内部类私有使用)(了解)</p>
+<ul>
+<li>private</li>
+</ul>
+<p>###10.10_面向对象(静态成员内部类)(了解)</p>
+<ul>
+<li>static</li>
+<li>B:成员内部类被静态修饰后的访问方式是:<ul>
+<li>外部类名.内部类名 对象名 = 外部类名.内部类对象;</li>
+</ul>
+</li>
+</ul>
+<p>###10.11_面向对象(成员内部类的面试题)(掌握)</p>
+<ul>
+<li>A:面试题</li>
+<li><pre><code>要求：使用已知的变量，在控制台输出30，20，10。
+
+class Outer {
+    public int num = 10;
+    class Inner {
+        public int num = 20;
+        public void show() {
+            int num = 30;
+            System.out.println(?);
+            System.out.println(??);
+            System.out.println(???);
+        }
+    }
+}
+class InnerClassTest {
+    public static void main(String[] args) {
+        Outer.Inner oi = new Outer().new Inner();
+        oi.show();
+    }    
+}
+</code></pre></li>
+</ul>
+<p>###10.12_面向对象(局部内部类访问局部变量的问题)(掌握)</p>
+<ul>
+<li><p>A:案例演示</p>
+<ul>
+<li>局部内部类访问局部变量必须用final修饰</li>
+<li><p>局部内部类在访问他所在方法中的局部变量必须用final修饰,为什么?<br>  因为当调用这个方法时,局部变量如果没有用final修饰,他的生命周期和方法的生命周期是一样的,当方法弹栈,这个局部变量也会消失,那么如果局部内部类对象还没有马上消失想用这个局部变量,就没有了,如果用final修饰会在类加载的时候进入常量池,即使方法弹栈,常量池的常量还在,也可以继续使用</p>
+<p>  但是jdk1.8取消了这个事情,所以我认为这是个bug</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>###10.13_面向对象(匿名内部类的格式和理解)</p>
+<ul>
+<li>A:匿名内部类<ul>
+<li>就是内部类的简化写法。</li>
+</ul>
+</li>
+<li>B:前提：存在一个类或者接口<ul>
+<li>这里的类可以是具体类也可以是抽象类。</li>
+</ul>
+</li>
+<li>C:格式：</li>
+<li><pre><code>new 类名或者接口名(){
+    重写方法;
+}
+</code></pre></li>
+<li>D:本质是什么呢?<ul>
+<li>是一个继承了该类或者实现了该接口的子类匿名对象。</li>
+</ul>
+</li>
+<li>E:案例演示<ul>
+<li>按照要求来一个匿名内部类</li>
+</ul>
+</li>
+</ul>
+<p>###10.14_面向对象(匿名内部类重写多个方法调用)</p>
+<ul>
+<li>A:案例演示<ul>
+<li>匿名内部类的方法调用</li>
+</ul>
+</li>
+</ul>
+<p>###10.15_面向对象(匿名内部类在开发中的应用)</p>
+<ul>
+<li>A:代码如下</li>
+<li><pre><code>//这里写抽象类，接口都行
+abstract class Person {
+    public abstract void show();
+}
+
+class PersonDemo {
+    public void method(Person p) {
+        p.show();
+    }
+}
+
+class PersonTest {
+    public static void main(String[] args) {
+        //如何调用PersonDemo中的method方法呢?
+        PersonDemo pd = new PersonDemo ();
+
+    }
+}
+</code></pre></li>
+</ul>
+<p>###10.16_面向对象(匿名内部类的面试题)</p>
+<ul>
+<li>A:面试题</li>
+<li><pre><code>按照要求，补齐代码
+interface Inter { void show(); }
+class Outer { //补齐代码 }
+class OuterDemo {
+    public static void main(String[] args) {
+          Outer.method().show();
+      }
+}
+要求在控制台输出”HelloWorld”
+</code></pre></li>
+</ul>
+<p>###10.17_day10总结</p>
+<ul>
+<li>把今天的知识点总结一遍。</li>
+</ul>
 
       
     </div>
@@ -408,7 +686,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/RESTFUL/" rel="tag"># RESTFUL</a>
+            <a href="/tags/内部类/" rel="tag"># 内部类</a>
           
         </div>
       
@@ -421,15 +699,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/07/day13-StringBuffer笔记/" rel="next" title="StringBuffer类">
-                <i class="fa fa-chevron-left"></i> StringBuffer类
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/06/day12-String笔记/" rel="prev" title="String类概述">
+                String类概述 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
