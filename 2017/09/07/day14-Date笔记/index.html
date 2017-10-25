@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="StringBuffer," />
+  <meta name="keywords" content="正则，Date类," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="###13.01_常见对象(StringBuffer类的概述)  A:StringBuffer类概述 通过JDK提供的API，查看StringBuffer类的说明 线程安全的可变字符序列    B:StringBuffer和String的区别 String是一个不可变的字符序列 StringBuffer是一个可变的字符序列     ###13.02_常见对象(StringBuffer类的构造方法)">
-<meta name="keywords" content="StringBuffer">
+<meta name="description" content="###14.01_常见对象(正则表达式的概述和简单使用)  A:正则表达式 是指一个用来描述或者匹配一系列符合某个语法规则的字符串的单个字符串。其实就是一种规则。有自己特殊的应用。 作用:比如注册邮箱,邮箱有用户名和密码,一般会对其限制长度,这个限制长度的事情就是正则表达式做的   B:案例演示  需求：校验qq号码.  1:要求必须是5-15位数字 2:0不能开头 3:必须都是数字   a:非正">
+<meta name="keywords" content="正则，Date类">
 <meta property="og:type" content="article">
-<meta property="og:title" content="StringBuffer类">
-<meta property="og:url" content="http://zouyip.github.io/2017/09/07/day13-StringBuffer笔记/index.html">
+<meta property="og:title" content="正则表达式与Date类">
+<meta property="og:url" content="http://zouyip.github.io/2017/09/07/day14-Date笔记/index.html">
 <meta property="og:site_name" content="菜鸟的心酸历程">
-<meta property="og:description" content="###13.01_常见对象(StringBuffer类的概述)  A:StringBuffer类概述 通过JDK提供的API，查看StringBuffer类的说明 线程安全的可变字符序列    B:StringBuffer和String的区别 String是一个不可变的字符序列 StringBuffer是一个可变的字符序列     ###13.02_常见对象(StringBuffer类的构造方法)">
+<meta property="og:description" content="###14.01_常见对象(正则表达式的概述和简单使用)  A:正则表达式 是指一个用来描述或者匹配一系列符合某个语法规则的字符串的单个字符串。其实就是一种规则。有自己特殊的应用。 作用:比如注册邮箱,邮箱有用户名和密码,一般会对其限制长度,这个限制长度的事情就是正则表达式做的   B:案例演示  需求：校验qq号码.  1:要求必须是5-15位数字 2:0不能开头 3:必须都是数字   a:非正">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-25T01:37:24.518Z">
+<meta property="og:updated_time" content="2017-10-25T01:46:31.710Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="StringBuffer类">
-<meta name="twitter:description" content="###13.01_常见对象(StringBuffer类的概述)  A:StringBuffer类概述 通过JDK提供的API，查看StringBuffer类的说明 线程安全的可变字符序列    B:StringBuffer和String的区别 String是一个不可变的字符序列 StringBuffer是一个可变的字符序列     ###13.02_常见对象(StringBuffer类的构造方法)">
+<meta name="twitter:title" content="正则表达式与Date类">
+<meta name="twitter:description" content="###14.01_常见对象(正则表达式的概述和简单使用)  A:正则表达式 是指一个用来描述或者匹配一系列符合某个语法规则的字符串的单个字符串。其实就是一种规则。有自己特殊的应用。 作用:比如注册邮箱,邮箱有用户名和密码,一般会对其限制长度,这个限制长度的事情就是正则表达式做的   B:案例演示  需求：校验qq号码.  1:要求必须是5-15位数字 2:0不能开头 3:必须都是数字   a:非正">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://zouyip.github.io/2017/09/07/day13-StringBuffer笔记/"/>
+  <link rel="canonical" href="http://zouyip.github.io/2017/09/07/day14-Date笔记/"/>
 
 
 
 
 
-  <title>StringBuffer类 | 菜鸟的心酸历程</title>
+  <title>正则表达式与Date类 | 菜鸟的心酸历程</title>
   
 
 
@@ -283,7 +283,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zouyip.github.io/2017/09/07/day13-StringBuffer笔记/">
+    <link itemprop="mainEntityOfPage" href="http://zouyip.github.io/2017/09/07/day14-Date笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zou Yipeng">
@@ -300,7 +300,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">StringBuffer类</h1>
+          <h1 class="post-title" itemprop="name headline">正则表达式与Date类</h1>
         
 
         <div class="post-meta">
@@ -312,7 +312,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-07T11:50:30+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-07T18:55:30+08:00">
                 2017-09-07
               </time>
             
@@ -372,378 +372,303 @@
       
 
       
-        <p>###13.01_常见对象(StringBuffer类的概述)</p>
+        <p>###14.01_常见对象(正则表达式的概述和简单使用)</p>
 <ul>
-<li>A:StringBuffer类概述<ul>
-<li>通过JDK提供的API，查看StringBuffer类的说明</li>
-<li>线程安全的可变字符序列 </li>
-</ul>
-</li>
-<li>B:StringBuffer和String的区别<ul>
-<li>String是一个不可变的字符序列</li>
-<li>StringBuffer是一个可变的字符序列 </li>
-</ul>
-</li>
-</ul>
-<p>###13.02_常见对象(StringBuffer类的构造方法)</p>
-<ul>
-<li>A:StringBuffer的构造方法：<ul>
-<li>public StringBuffer():无参构造方法</li>
-<li>public StringBuffer(int capacity):指定容量的字符串缓冲区对象</li>
-<li>public StringBuffer(String str):指定字符串内容的字符串缓冲区对象</li>
-</ul>
-</li>
-<li>B:StringBuffer的方法：<ul>
-<li>public int capacity()：返回当前容量。    理论值(不掌握)</li>
-<li>public int length():返回长度（字符数）。 实际值</li>
-</ul>
-</li>
-<li>C:案例演示<ul>
-<li>构造方法和长度方法的使用</li>
-</ul>
-</li>
-</ul>
-<p>###13.03_常见对象(StringBuffer的添加功能)</p>
-<ul>
-<li><p>A:StringBuffer的添加功能</p>
-<ul>
-<li>public StringBuffer append(String str):<ul>
-<li>可以把任意类型数据添加到字符串缓冲区里面,并返回字符串缓冲区本身</li>
-</ul>
-</li>
-<li><p>public StringBuffer insert(int offset,String str):</p>
-<ul>
-<li>在指定位置把任意类型的数据插入到字符串缓冲区里面,并返回字符串缓冲区本身</li>
-</ul>
-<p>StringBuffer是字符串缓冲区,当new的时候是在堆内存创建了一个对象,底层是一个长度为16的字符数组<br>  当调用添加的方法时,不会再重新创建对象,在不断向原缓冲区添加字符</p>
-</li>
-</ul>
-</li>
-</ul>
-<p>###13.04_常见对象(StringBuffer的删除功能)</p>
-<ul>
-<li>A:StringBuffer的删除功能<ul>
-<li>public StringBuffer deleteCharAt(int index):<ul>
-<li>删除指定位置的字符，并返回本身</li>
-</ul>
-</li>
-<li>public StringBuffer delete(int start,int end):<ul>
-<li>删除从指定位置开始指定位置结束的内容，并返回本身</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>###13.05_常见对象(StringBuffer的替换和反转功能)</p>
-<ul>
-<li>A:StringBuffer的替换功能<ul>
-<li>public StringBuffer replace(int start,int end,String str):<ul>
-<li>从start开始到end用str替换</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>B:StringBuffer的反转功能<ul>
-<li>public StringBuffer reverse():<ul>
-<li>字符串反转</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>###13.06_常见对象(StringBuffer的截取功能及注意事项)</p>
-<ul>
-<li>A:StringBuffer的截取功能<ul>
-<li>public String substring(int start):<ul>
-<li>从指定位置截取到末尾</li>
-</ul>
-</li>
-<li>public String substring(int start,int end):<ul>
-<li>截取从指定位置开始到结束位置，包括开始位置，不包括结束位置</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>B:注意事项<ul>
-<li>注意:返回值类型不再是StringBuffer本身</li>
-</ul>
-</li>
-</ul>
-<p>###13.07_常见对象(StringBuffer和String的相互转换)</p>
-<ul>
-<li>A:String – StringBuffer<ul>
-<li>a:通过构造方法</li>
-<li>b:通过append()方法</li>
-</ul>
-</li>
-<li>B:StringBuffer – String<ul>
-<li>a:通过构造方法</li>
-<li>b:通过toString()方法</li>
-<li>c:通过subString(0,length);</li>
-</ul>
-</li>
-</ul>
-<p>###13.08_常见对象(把数组转成字符串)</p>
-<ul>
-<li><p>A:案例演示</p>
-<ul>
-<li>需求：把数组中的数据按照指定个格式拼接成一个字符串</li>
-<li><pre><code>举例：
-    int[] arr = {1,2,3};    
-输出结果：
-    &quot;[1, 2, 3]&quot;
-
-用StringBuffer的功能实现
-</code></pre></li>
-</ul>
-</li>
-</ul>
-<p>###13.09_常见对象(字符串反转)</p>
-<ul>
-<li>A:案例演示</li>
-<li><pre><code>需求：把字符串反转
-    举例：键盘录入&quot;abc&quot;        
-    输出结果：&quot;cba&quot;
-
-用StringBuffer的功能实现    
-</code></pre></li>
-</ul>
-<p>###13.10_常见对象(StringBuffer和StringBuilder的区别)</p>
-<ul>
-<li>A:StringBuilder的概述<ul>
-<li>通过查看API了解一下StringBuilder类</li>
-</ul>
-</li>
-<li><p>B:面试题</p>
-<ul>
-<li>String,StringBuffer,StringBuilder的区别</li>
-<li>StringBuffer和StringBuilder的区别</li>
-<li>StringBuffer是jdk1.0版本的,是线程安全的,效率低</li>
-<li><p>StringBuilder是jdk1.5版本的,是线程不安全的,效率高</p>
-</li>
-<li><p>String和StringBuffer,StringBuilder的区别</p>
-</li>
-<li>String是一个不可变的字符序列</li>
-<li>StringBuffer,StringBuilder是可变的字符序列</li>
-</ul>
-</li>
-</ul>
-<p>###13.11_常见对象(String和StringBuffer分别作为参数传递)</p>
-<ul>
-<li>A:形式参数问题<ul>
-<li>String作为参数传递</li>
-<li>StringBuffer作为参数传递 </li>
-</ul>
-</li>
-<li>B:案例演示<ul>
-<li>String和StringBuffer分别作为参数传递问题</li>
-</ul>
-</li>
-</ul>
-<p>###13.12_常见对象(数组高级冒泡排序原理图解)</p>
-<ul>
-<li>A:画图演示</li>
-<li><pre><code>需求：
-    数组元素：{24, 69, 80, 57, 13}
-    请对数组元素进行排序。
-
-    冒泡排序
-        相邻元素两两比较，大的往后放，第一次完毕，最大值出现在了最大索引处
-</code></pre></li>
-</ul>
-<p>###13.13_常见对象(数组高级冒泡排序代码实现)</p>
-<ul>
-<li>A:案例演示<ul>
-<li>数组高级冒泡排序代码</li>
-</ul>
-</li>
-</ul>
-<p>###13.14_常见对象(数组高级选择排序原理图解)</p>
-<ul>
-<li><p>A:画图演示</p>
-<ul>
-<li><p>需求：</p>
-<ul>
-<li>数组元素：{24, 69, 80, 57, 13}</li>
-<li><p>请对数组元素进行排序。</p>
-</li>
-<li><p>选择排序</p>
-<ul>
-<li>从0索引开始，依次和后面元素比较，小的往前放，第一次完毕，最小值出现在了最小索引处</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>###13.15_常见对象(数组高级选择排序代码实现)</p>
-<ul>
-<li>A:案例演示<ul>
-<li>数组高级选择排序代码</li>
-</ul>
-</li>
-</ul>
-<p>###13.16_常见对象(数组高级二分查找原理图解)</p>
-<ul>
-<li>A:画图演示<ul>
-<li>二分查找  </li>
-<li>前提：数组元素有序</li>
-</ul>
-</li>
-</ul>
-<p>###13.17_常见对象(数组高级二分查找代码实现及注意事项)</p>
-<ul>
-<li>A:案例演示<ul>
-<li>数组高级二分查找代码</li>
-</ul>
-</li>
-<li>B:注意事项<ul>
-<li>如果数组无序，就不能使用二分查找。<ul>
-<li>因为如果你排序了，但是你排序的时候已经改变了我最原始的元素索引。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>####总结：循环嵌套的排序算法中外层循环控制的是比较的次数。</p>
-<p>###13.18_常见对象(Arrays类的概述和方法使用)</p>
-<ul>
-<li>A:Arrays类概述<ul>
-<li>针对数组进行操作的工具类。</li>
-<li>提供了排序，查找等功能。</li>
-</ul>
-</li>
-<li>B:成员方法<ul>
-<li>public static String toString(int[] a)</li>
-<li>public static void sort(int[] a)</li>
-<li>public static int binarySearch(int[] a,int key)</li>
-</ul>
-</li>
-</ul>
-<p>###13.19_常见对象(基本类型包装类的概述)</p>
-<ul>
-<li>A:为什么会有基本类型包装类<ul>
-<li>将基本数据类型封装成对象的好处在于可以在对象中定义更多的功能方法操作该数据。</li>
-</ul>
-</li>
-<li>B:常用操作<ul>
-<li>常用的操作之一：用于基本数据类型与字符串之间的转换。</li>
-</ul>
-</li>
-<li>C:基本类型和包装类的对应</li>
-<li><pre><code>byte             Byte
-short            Short
-int                Integer
-long            Long
-float            Float
-double            Double
-char            Character
-boolean            Boolean
-</code></pre></li>
-</ul>
-<p>###13.20_常见对象(Integer类的概述和构造方法)</p>
-<ul>
-<li><p>A:Integer类概述</p>
-<ul>
-<li><p>通过JDK提供的API，查看Integer类的说明</p>
-</li>
-<li><p>Integer 类在对象中包装了一个基本类型 int 的值,</p>
-</li>
-<li>该类提供了多个方法，能在 int 类型和 String 类型之间互相转换，</li>
-<li>还提供了处理 int 类型时非常有用的其他一些常量和方法</li>
-</ul>
-</li>
-<li>B:构造方法<ul>
-<li>public Integer(int value)</li>
-<li>public Integer(String s)<br>  //Integer i2 = new Integer(“abc”);            //java.lang.NumberFormatException数字格式异常<br>  //System.out.println(i2);                    //因为abc不是数字字符串,所以转换会报错</li>
-</ul>
-</li>
-<li>C:案例演示<ul>
-<li>使用构造方法创建对象</li>
-</ul>
-</li>
-</ul>
-<p>###13.21_常见对象(String和int类型的相互转换)</p>
-<ul>
-<li>A:int – String<ul>
-<li>a:和””进行拼接</li>
-<li>b:public static String valueOf(int i)</li>
-<li>c:int – Integer – String(Integer类的toString方法())</li>
-<li>d:public static String toString(int i)(Integer类的静态方法)</li>
-</ul>
-</li>
-<li>B:String – int<ul>
-<li>a:String – Integer – int</li>
-<li>public static int parseInt(String s)</li>
-</ul>
-</li>
-</ul>
-<p>###13.22_常见对象(JDK5的新特性自动装箱和拆箱)</p>
-<ul>
-<li>A:JDK5的新特性<ul>
-<li>自动装箱：把基本类型转换为包装类类型</li>
-<li>自动拆箱：把包装类类型转换为基本类型</li>
+<li>A:正则表达式<ul>
+<li>是指一个用来描述或者匹配一系列符合某个语法规则的字符串的单个字符串。其实就是一种规则。有自己特殊的应用。</li>
+<li>作用:比如注册邮箱,邮箱有用户名和密码,一般会对其限制长度,这个限制长度的事情就是正则表达式做的</li>
 </ul>
 </li>
 <li><p>B:案例演示</p>
 <ul>
-<li><p>JDK5的新特性自动装箱和拆箱</p>
-</li>
-<li><p>Integer ii = 100;</p>
-</li>
-<li>ii += 200;</li>
-</ul>
-</li>
-<li>C:注意事项<ul>
-<li>在使用时，Integer  x = null;代码就会出现NullPointerException。</li>
-<li>建议先判断是否为null，然后再使用。</li>
-</ul>
-</li>
-</ul>
-<p>###13.23_常见对象(Integer的面试题)</p>
+<li><p>需求：校验qq号码.</p>
 <ul>
-<li>A:Integer的面试题</li>
-<li><pre><code>看程序写结果
-
-Integer i1 = new Integer(97);
-Integer i2 = new Integer(97);
-System.out.println(i1 == i2);        //false
-System.out.println(i1.equals(i2));    //true
-System.out.println(&quot;-----------&quot;);
-
-Integer i3 = new Integer(197);
-Integer i4 = new Integer(197);
-System.out.println(i3 == i4);        //false
-System.out.println(i3.equals(i4));    //true
-System.out.println(&quot;-----------&quot;);
-
-Integer i5 = 97;
-Integer i6 = 97;
-System.out.println(i5 == i6);        //true
-System.out.println(i5.equals(i6));    //true 
-System.out.println(&quot;-----------&quot;);
-
-Integer i7 = 197;
-Integer i8 = 197;
-System.out.println(i7 == i8);        //false
-System.out.println(i7.equals(i8));    //true    
-</code></pre></li>
-<li><p>-128到127是byte的取值范围,如果在这个取值范围内,自动装箱就不会新创建对象,而是从常量池中获取</p>
-<pre><code>* 如果超过了byte取值范围就会再新创建对象
-* 
-* public static Integer valueOf(int i) {
-       assert IntegerCache.high &gt;= 127;
-       if (i &gt;= IntegerCache.low &amp;&amp; i &lt;= IntegerCache.high)            //i&gt;= -128 &amp;&amp; i &lt;= 127
-           return IntegerCache.cache[i + (-IntegerCache.low)];
-       return new Integer(i);
-   }
-*/
-</code></pre><p>  }</p>
+<li>1:要求必须是5-15位数字</li>
+<li>2:0不能开头</li>
+<li>3:必须都是数字</li>
+</ul>
+</li>
+<li><p>a:非正则表达式实现</p>
+</li>
+<li>b:正则表达式实现</li>
+</ul>
 </li>
 </ul>
-<p>}</p>
-<p>###13.24_day13总结</p>
+<p>###14.02_常见对象(字符类演示)</p>
+<ul>
+<li>A:字符类<ul>
+<li>[abc] a、b 或 c（简单类） </li>
+<li>[^abc] 任何字符，除了 a、b 或 c（否定） </li>
+<li>[a-zA-Z] a到 z 或 A到 Z，两头的字母包括在内（范围） </li>
+<li>[0-9] 0到9的字符都包括<br>###14.03_常见对象(预定义字符类演示)</li>
+</ul>
+</li>
+<li>A:预定义字符类<ul>
+<li>. 任何字符。</li>
+<li>\d 数字：[0-9]</li>
+<li>\w 单词字符：[a-zA-Z<em>0-9]<br>###14.04</em>常见对象(数量词)</li>
+</ul>
+</li>
+<li>A:Greedy 数量词 <ul>
+<li>X? X，一次或一次也没有</li>
+<li>X* X，零次或多次</li>
+<li>X+ X，一次或多次</li>
+<li>X{n} X，恰好 n 次 </li>
+<li>X{n,} X，至少 n 次 </li>
+<li>X{n,m} X，至少 n 次，但是不超过 m 次 </li>
+</ul>
+</li>
+</ul>
+<p>###14.05_常见对象(正则表达式的分割功能)</p>
+<ul>
+<li>A:正则表达式的分割功能<ul>
+<li>String类的功能：public String[] split(String regex)</li>
+</ul>
+</li>
+<li>B:案例演示<ul>
+<li>正则表达式的分割功能</li>
+</ul>
+</li>
+</ul>
+<p>###14.06_常见对象(把给定字符串中的数字排序)</p>
+<ul>
+<li>A:案例演示<ul>
+<li>需求：我有如下一个字符串:”91 27 46 38 50”，请写代码实现最终输出结果是：”27 38 46 50 91”</li>
+<li>分析:<ul>
+<li>1,将字符串切割成字符串数组        public String[] split(String regex) 返回值是字符串数组</li>
+<li>2,将字符串转换成数字并将其存储在一个等长度的int数组中</li>
+<li>3,排序</li>
+<li>4,将排序后的结果遍历并拼接成一个字符串</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>###14.07_常见对象(正则表达式的替换功能)</p>
+<ul>
+<li>A:正则表达式的替换功能<ul>
+<li>String类的功能：public String replaceAll(String regex,String replacement)</li>
+</ul>
+</li>
+<li>B:案例演示<ul>
+<li>正则表达式的替换功能</li>
+</ul>
+</li>
+</ul>
+<p>###14.08_常见对象(正则表达式的分组功能)</p>
+<ul>
+<li>A:正则表达式的分组功能<ul>
+<li>捕获组可以通过从左到右计算其开括号来编号。例如，在表达式 ((A)(B(C))) 中，存在四个这样的组： </li>
+</ul>
+</li>
+<li><pre><code>1     ((A)(B(C))) 
+2     (A 
+3     (B(C)) 
+4     (C) 
+
+组零始终代表整个表达式。
+</code></pre><p>B:案例演示<br>  a:切割</p>
+<pre><code>需求：请按照叠词切割： &quot;sdqqfgkkkhjppppkl&quot;;
+</code></pre><p>  b:替换</p>
+<pre><code>需求：我我....我...我.要...要要...要学....学学..学.编..编编.编.程.程.程..程
+将字符串还原成:“我要学编程”。
+</code></pre><p>###14.09_常见对象(Pattern和Matcher的概述)</p>
+</li>
+<li>A:Pattern和Matcher的概述</li>
+<li><p>B:模式和匹配器的典型调用顺序</p>
+<ul>
+<li><p>通过JDK提供的API，查看Pattern类的说明</p>
+</li>
+<li><p>典型的调用顺序是 </p>
+</li>
+<li>Pattern p = Pattern.compile(“a*b”);</li>
+<li>Matcher m = p.matcher(“aaaaab”);</li>
+<li>boolean b = m.matches();</li>
+</ul>
+</li>
+</ul>
+<p>###14.10_常见对象(正则表达式的获取功能)</p>
+<ul>
+<li>A:正则表达式的获取功能<ul>
+<li>Pattern和Matcher的结合使用</li>
+</ul>
+</li>
+<li>B:案例演示<ul>
+<li>需求：把一个字符串中的手机号码获取出来</li>
+</ul>
+</li>
+</ul>
+<p>###14.11_常见对象(Math类概述和方法使用)</p>
+<ul>
+<li>A:Math类概述<ul>
+<li>Math 类包含用于执行基本数学运算的方法，如初等指数、对数、平方根和三角函数。 </li>
+</ul>
+</li>
+<li>B:成员方法<ul>
+<li>public static int abs(int a)</li>
+<li>public static double ceil(double a)</li>
+<li>public static double floor(double a)</li>
+<li>public static int max(int a,int b) min自学</li>
+<li>public static double pow(double a,double b)</li>
+<li>public static double random()</li>
+<li>public static int round(float a) 参数为double的自学</li>
+<li>public static double sqrt(double a)</li>
+</ul>
+</li>
+</ul>
+<p>###14.12_常见对象(Random类的概述和方法使用)</p>
+<ul>
+<li>A:Random类的概述<ul>
+<li>此类用于产生随机数如果用相同的种子创建两个 Random 实例，</li>
+<li>则对每个实例进行相同的方法调用序列，它们将生成并返回相同的数字序列。</li>
+</ul>
+</li>
+<li>B:构造方法<br>  <em>Random() ：创建一个新的随机数发生器。
+  </em>Random(long seed) ：用一个种子（长整型）创建一个随机数发生器。</li>
+<li>C:成员方法：nextInt(int n) 方法用于获取一个伪随机，在0(包括)和指定值(不包括)，<pre><code>从此随机数生成器的序列中取出均匀分布的int值。
+</code></pre><ul>
+<li>public int nextInt()</li>
+<li>public int nextInt(int n)(重点掌握)</li>
+</ul>
+</li>
+</ul>
+<p>###14.13_常见对象(System类的概述和方法使用)</p>
+<ul>
+<li>A:System类的概述<ul>
+<li>System 类包含一些有用的类字段和方法。它不能被实例化。 </li>
+</ul>
+</li>
+<li>B:成员方法<ul>
+<li>public static void gc()</li>
+<li>public static void exit(int status)</li>
+<li>public static long currentTimeMillis()</li>
+<li>pubiic static void arraycopy(Object src, int srcPos, Object dest, int destPos, int length) </li>
+</ul>
+</li>
+<li>C:案例演示<ul>
+<li>System类的成员方法使用</li>
+</ul>
+</li>
+</ul>
+<p>###14.14_常见对象(BigInteger类的概述和方法使用)</p>
+<ul>
+<li>A:BigInteger的概述<ul>
+<li>可以让超过Integer范围内的数据进行运算</li>
+</ul>
+</li>
+<li>B:构造方法<ul>
+<li>public BigInteger(String val)</li>
+</ul>
+</li>
+<li>C:成员方法<ul>
+<li>public BigInteger add(BigInteger val)</li>
+<li>public BigInteger subtract(BigInteger val)</li>
+<li>public BigInteger multiply(BigInteger val)</li>
+<li>public BigInteger divide(BigInteger val)</li>
+<li>public BigInteger[] divideAndRemainder(BigInteger val)</li>
+</ul>
+</li>
+</ul>
+<p>###14.15_常见对象(BigDecimal类的概述和方法使用)</p>
+<ul>
+<li><p>A:BigDecimal的概述</p>
+<ul>
+<li>由于在运算的时候，float类型和double很容易丢失精度，演示案例。</li>
+<li><p>所以，为了能精确的表示、计算浮点数，Java提供了BigDecimal</p>
+</li>
+<li><p>不可变的、任意精度的有符号十进制数。</p>
+</li>
+</ul>
+</li>
+<li>B:构造方法<ul>
+<li>public BigDecimal(String val)</li>
+</ul>
+</li>
+<li>C:成员方法<ul>
+<li>public BigDecimal add(BigDecimal augend)</li>
+<li>public BigDecimal subtract(BigDecimal subtrahend)</li>
+<li>public BigDecimal multiply(BigDecimal multiplicand)</li>
+<li>public BigDecimal divide(BigDecimal divisor)</li>
+</ul>
+</li>
+<li>D:案例演示<ul>
+<li>BigDecimal类的构造方法和成员方法使用</li>
+</ul>
+</li>
+</ul>
+<p>###14.16_常见对象(Date类的概述和方法使用)(掌握)</p>
+<ul>
+<li>A:Date类的概述<ul>
+<li>类 Date 表示特定的瞬间，精确到毫秒。 </li>
+</ul>
+</li>
+<li>B:构造方法<ul>
+<li>public Date()</li>
+<li>public Date(long date)</li>
+</ul>
+</li>
+<li>C:成员方法<ul>
+<li>public long getTime()</li>
+<li>public void setTime(long time)</li>
+</ul>
+</li>
+</ul>
+<p>###14.17_常见对象(SimpleDateFormat类实现日期和字符串的相互转换)(掌握)</p>
+<ul>
+<li>A:DateFormat类的概述<ul>
+<li>DateFormat 是日期/时间格式化子类的抽象类，它以与语言无关的方式格式化并解析日期或时间。是抽象类，所以使用其子类SimpleDateFormat</li>
+</ul>
+</li>
+<li>B:SimpleDateFormat构造方法<ul>
+<li>public SimpleDateFormat()</li>
+<li>public SimpleDateFormat(String pattern)</li>
+</ul>
+</li>
+<li>C:成员方法<ul>
+<li>public final String format(Date date)</li>
+<li>public Date parse(String source)</li>
+</ul>
+</li>
+</ul>
+<p>###14.18_常见对象(你来到这个世界多少天案例)(掌握)</p>
+<ul>
+<li>A:案例演示<ul>
+<li>需求：算一下你来到这个世界多少天?</li>
+</ul>
+</li>
+</ul>
+<p>###14.19_常见对象(Calendar类的概述和获取日期的方法)(掌握)</p>
+<ul>
+<li>A:Calendar类的概述<ul>
+<li>Calendar 类是一个抽象类，它为特定瞬间与一组诸如 YEAR、MONTH、DAY_OF_MONTH、HOUR 等日历字段之间的转换提供了一些方法，并为操作日历字段（例如获得下星期的日期）提供了一些方法。</li>
+</ul>
+</li>
+<li>B:成员方法<ul>
+<li>public static Calendar getInstance()</li>
+<li>public int get(int field)</li>
+</ul>
+</li>
+</ul>
+<p>###14.20_常见对象(Calendar类的add()和set()方法)(掌握)</p>
+<ul>
+<li>A:成员方法<ul>
+<li>public void add(int field,int amount)</li>
+<li>public final void set(int year,int month,int date)</li>
+</ul>
+</li>
+<li>B:案例演示<ul>
+<li>Calendar类的成员方法使用</li>
+</ul>
+</li>
+</ul>
+<p>###14.21_常见对象(如何获取任意年份是平年还是闰年)(掌握)</p>
+<ul>
+<li>A:案例演示<ul>
+<li>需求：键盘录入任意一个年份，判断该年是闰年还是平年</li>
+</ul>
+</li>
+</ul>
+<p>###14.22_day14总结</p>
 <ul>
 <li>把今天的知识点总结一遍。</li>
 </ul>
@@ -764,7 +689,7 @@ System.out.println(i7.equals(i8));    //true
       
         <div class="post-tags">
           
-            <a href="/tags/StringBuffer/" rel="tag"># StringBuffer</a>
+            <a href="/tags/正则，Date类/" rel="tag"># 正则，Date类</a>
           
         </div>
       
@@ -777,8 +702,8 @@ System.out.println(i7.equals(i8));    //true
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/06/day12-String笔记/" rel="next" title="String类概述">
-                <i class="fa fa-chevron-left"></i> String类概述
+              <a href="/2017/09/07/day13-StringBuffer笔记/" rel="next" title="StringBuffer类">
+                <i class="fa fa-chevron-left"></i> StringBuffer类
               </a>
             
           </div>
@@ -787,8 +712,8 @@ System.out.println(i7.equals(i8));    //true
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/09/07/day14-Date笔记/" rel="prev" title="正则表达式与Date类">
-                正则表达式与Date类 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/09/10/day15-List笔记/" rel="prev" title="List">
+                List <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

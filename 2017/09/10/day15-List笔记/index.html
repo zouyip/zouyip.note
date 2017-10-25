@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="List," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="###15.01_集合框架(对象数组的概述和使用)  A:案例演示 需求：我有5个学生，请把这个5个学生的信息存储到数组中，并遍历数组，获取得到每一个学生信息。   Student[] arr = new Student[5];                    //存储学生对象 arr[0] = new Student(&amp;quot;张三&amp;quot;, 23); arr[1] = new St">
+<meta name="keywords" content="List">
+<meta property="og:type" content="article">
+<meta property="og:title" content="List">
+<meta property="og:url" content="http://zouyip.github.io/2017/09/10/day15-List笔记/index.html">
+<meta property="og:site_name" content="菜鸟的心酸历程">
+<meta property="og:description" content="###15.01_集合框架(对象数组的概述和使用)  A:案例演示 需求：我有5个学生，请把这个5个学生的信息存储到数组中，并遍历数组，获取得到每一个学生信息。   Student[] arr = new Student[5];                    //存储学生对象 arr[0] = new Student(&amp;quot;张三&amp;quot;, 23); arr[1] = new St">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-25T01:47:41.283Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="List">
+<meta name="twitter:description" content="###15.01_集合框架(对象数组的概述和使用)  A:案例演示 需求：我有5个学生，请把这个5个学生的信息存储到数组中，并遍历数组，获取得到每一个学生信息。   Student[] arr = new Student[5];                    //存储学生对象 arr[0] = new Student(&amp;quot;张三&amp;quot;, 23); arr[1] = new St">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://zouyip.github.io/2017/09/10/day15-List笔记/"/>
+
+
+
+
+
+  <title>List | 菜鸟的心酸历程</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?5da72f9d0dfb00924337c58fbc4ef3dd";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">菜鸟的心酸历程</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">zyp's blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags 标签页" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about   关于页面" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html 公益 404" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zouyip.github.io/2017/09/10/day15-List笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zou Yipeng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="菜鸟的心酸历程">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">List</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-10T17:55:30+08:00">
+                2017-09-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java基础/" itemprop="url" rel="index">
+                    <span itemprop="name">java基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>###15.01_集合框架(对象数组的概述和使用)</p>
+<ul>
+<li>A:案例演示<ul>
+<li>需求：我有5个学生，请把这个5个学生的信息存储到数组中，并遍历数组，获取得到每一个学生信息。</li>
+</ul>
+</li>
+<li><pre><code>Student[] arr = new Student[5];                    //存储学生对象
+arr[0] = new Student(&quot;张三&quot;, 23);
+arr[1] = new Student(&quot;李四&quot;, 24);
+arr[2] = new Student(&quot;王五&quot;, 25);
+arr[3] = new Student(&quot;赵六&quot;, 26);
+arr[4] = new Student(&quot;马哥&quot;, 20);
+
+for (int i = 0; i &lt; arr.length; i++) {
+    System.out.println(arr[i]);
+}
+</code></pre></li>
+<li><p>B:画图演示</p>
+<ul>
+<li>把学生数组的案例画图讲解</li>
+<li>数组和集合存储引用数据类型,存的都是地址值</li>
+</ul>
+</li>
+</ul>
+<p>###15.02_集合框架(集合的由来及集合继承体系图)</p>
+<ul>
+<li>A:集合的由来<ul>
+<li>数组长度是固定,当添加的元素超过了数组的长度时需要对数组重新定义,太麻烦,java内部给我们提供了集合类,<br>能存储任意对象,长度是可以改变的,随着元素的增加而增加,随着元素的减少而减少 </li>
+</ul>
+</li>
+<li>B:数组和集合的区别<ul>
+<li>区别1 : <ul>
+<li>数组既可以存储基本数据类型,又可以存储引用数据类型,基本数据类型存储的是值,引用数据类型存储的是地址值</li>
+<li>集合只能存储引用数据类型(对象)集合中也可以存储基本数据类型,但是在存储的时候会自动装箱变成对象</li>
+</ul>
+</li>
+<li>区别2:<ul>
+<li>数组长度是固定的,不能自动增长</li>
+<li>集合的长度的是可变的,可以根据元素的增加而增长</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>C:数组和集合什么时候用<pre><code>* 1,如果元素个数是固定的推荐用数组
+* 2,如果元素个数不是固定的推荐用集合
+</code></pre></li>
+<li>D:集合继承体系图</li>
+</ul>
+<p>###15.03_集合框架(Collection集合的基本功能测试)</p>
+<ul>
+<li>A:案例演示    </li>
+<li><pre><code>基本功能演示
+
+boolean add(E e)
+boolean remove(Object o)
+void clear()
+boolean contains(Object o)
+boolean isEmpty()
+int size()
+</code></pre></li>
+<li><p>B:注意:</p>
+</li>
+<li><pre><code>collectionXxx.java使用了未经检查或不安全的操作.
+注意:要了解详细信息,请使用 -Xlint:unchecked重新编译.
+java编译器认为该程序存在安全隐患
+温馨提示:这不是编译失败,所以先不用理会,等学了泛型你就知道了
+</code></pre></li>
+</ul>
+<p>###15.04_集合框架(集合的遍历之集合转数组遍历)</p>
+<ul>
+<li>A:集合的遍历<ul>
+<li>其实就是依次获取集合中的每一个元素。</li>
+</ul>
+</li>
+<li><p>B:案例演示</p>
+<ul>
+<li>把集合转成数组，可以实现集合的遍历</li>
+<li><p>toArray()<br>*</p>
+<pre><code>Collection coll = new ArrayList();
+coll.add(new Student(&quot;张三&quot;,23));        //Object obj = new Student(&quot;张三&quot;,23);
+coll.add(new Student(&quot;李四&quot;,24));
+coll.add(new Student(&quot;王五&quot;,25));
+coll.add(new Student(&quot;赵六&quot;,26));
+
+Object[] arr = coll.toArray();                //将集合转换成数组
+for (int i = 0; i &lt; arr.length; i++) {
+    Student s = (Student)arr[i];            //强转成Student
+    System.out.println(s.getName() + &quot;,&quot; + s.getAge());
+}
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<p>###15.05_集合框架(Collection集合的带All功能测试)</p>
+<ul>
+<li>A:案例演示</li>
+<li><pre><code>带All的功能演示
+
+boolean addAll(Collection c)    
+    c1.addAll(c2);                //将c2中的每一个元素添加到c1中
+    c1.add(c2);                    //将c2看成一个对象添加到c1中
+boolean removeAll(Collection c)        删除的是交集
+boolean containsAll(Collection c)    判断调用的集合是否包含传入的集合
+boolean retainAll(Collection c)        取交集,如果调用的集合改变就返回true,如果调用的集合不变就返回false
+</code></pre></li>
+</ul>
+<p>###15.06_集合框架(集合的遍历之迭代器遍历)</p>
+<ul>
+<li>A:迭代器概述<ul>
+<li>集合是用来存储元素,存储的元素需要查看,那么就需要迭代(遍历) </li>
+</ul>
+</li>
+<li><p>B:案例演示</p>
+<ul>
+<li><p>迭代器的使用</p>
+<pre><code>Collection c = new ArrayList();
+c.add(&quot;a&quot;);
+c.add(&quot;b&quot;);
+c.add(&quot;c&quot;);
+c.add(&quot;d&quot;);
+
+Iterator it = c.iterator();                        //获取迭代器的引用
+while(it.hasNext()) {                            //集合中的迭代方法(遍历)
+    System.out.println(it.next());
+}
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<p>###15.07_集合框架(Collection存储自定义对象并遍历)</p>
+<ul>
+<li><p>A:案例演示</p>
+<ul>
+<li>Collection存储自定义对象并用迭代器遍历</li>
+<li><pre><code>Collection c = new ArrayList();
+
+c.add(new Student(&quot;张三&quot;,23));
+c.add(new Student(&quot;李四&quot;,24));
+c.add(new Student(&quot;王五&quot;,25));
+c.add(new Student(&quot;赵六&quot;,26));
+c.add(new Student(&quot;赵六&quot;,26));
+
+for(Iterator it = c.iterator();it.hasNext();) {
+    Student s = (Student)it.next();                        //向下转型
+    System.out.println(s.getName() + &quot;,&quot; + s.getAge());    //获取对象中的姓名和年龄
+}
+System.out.println(&quot;------------------------------&quot;);
+Iterator it = c.iterator();                                //获取迭代器
+while(it.hasNext()) {                                    //判断集合中是否有元素
+    //System.out.println(((Student)(it.next())).getName() + &quot;,&quot; + ((Student)(it.next())).getAge());
+    Student s = (Student)it.next();                        //向下转型
+    System.out.println(s.getName() + &quot;,&quot; + s.getAge());    //获取对象中的姓名和年龄
+}
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<p>###15.08_集合框架(迭代器的原理及源码解析)(了解)</p>
+<ul>
+<li>A:迭代器原理<ul>
+<li>迭代器原理:迭代器是对集合进行遍历,而每一个集合内部的存储结构都是不同的,所以每一个集合存和取都是不一样,<br>那么就需要在每一个类中定义hasNext()和next()方法,这样做是可以的,但是会让整个集合体系过于臃肿,<br>迭代器是将这样的方法向上抽取出接口,然后在每个类的内部,定义自己迭代方式（覆写了）,这样做的好处有二,<br>第一规定了整个集合体系的遍历方式都是hasNext()和next()方法,第二,代码有底层内部实现,使用者不用管怎么实现的,会用即可 </li>
+</ul>
+</li>
+<li>B:迭代器源码解析<ul>
+<li>1,在eclipse中ctrl + shift + t找到ArrayList类</li>
+<li>2,ctrl+o查找iterator()方法</li>
+<li>3,查看返回值类型是new Itr(),说明Itr这个类实现Iterator接口</li>
+<li>4,查找Itr这个内部类,发现重写了Iterator中的所有抽象方法 </li>
+</ul>
+</li>
+</ul>
+<p>###15.09_集合框架(List集合的特有功能概述和测试)                List(数据结构：有序,可重复)</p>
+<ul>
+<li>A:List集合的特有功能概述<ul>
+<li>void add(int index,E element)        通过索引增加元素（若无索引参数，则自动在后面增加）</li>
+<li>E remove(int index)        通过索引删除元素,将被删除的元素返回</li>
+<li>E get(int index)</li>
+<li>E set(int index,E element)</li>
+</ul>
+</li>
+</ul>
+<p>###15.10_集合框架(List集合存储学生对象并遍历)</p>
+<ul>
+<li><p>A:案例演示</p>
+<ul>
+<li><p>通过size()和get()方法结合使用遍历。</p>
+<pre><code>List list = new ArrayList();
+list.add(new Student(&quot;张三&quot;, 18));
+list.add(new Student(&quot;李四&quot;, 18));
+list.add(new Student(&quot;王五&quot;, 18));
+list.add(new Student(&quot;赵六&quot;, 18));
+
+for(int i = 0; i &lt; list.size(); i++) {
+    Student s = (Student)list.get(i);
+    System.out.println(s.getName() + &quot;,&quot; + s.getAge());
+}
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<p>###15.11_集合框架(并发修改异常产生的原因及解决方案)</p>
+<ul>
+<li><p>A:案例演示</p>
+<ul>
+<li><p>需求：我有一个集合，请问，我想判断里面有没有”world”这个元素，如果有，我就添加一个”javaee”元素，请写代码实现。</p>
+<pre><code>List list = new ArrayList();
+list.add(&quot;a&quot;);
+list.add(&quot;b&quot;);
+list.add(&quot;world&quot;);
+list.add(&quot;d&quot;);
+list.add(&quot;e&quot;);
+
+/*Iterator it = list.iterator();
+while(it.hasNext()) {
+    String str = (String)it.next();
+    if(str.equals(&quot;world&quot;)) {
+        list.add(&quot;javaee&quot;);            //这里会抛出ConcurrentModificationException并发修改异常
+    }
+}*/
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>B:ConcurrentModificationException出现<ul>
+<li>迭代器遍历，集合修改集合</li>
+</ul>
+</li>
+<li><p>C:解决方案</p>
+<ul>
+<li>a:迭代器迭代元素，迭代器修改元素(ListIterator的特有功能add)</li>
+<li><p>b:集合遍历元素，集合修改元素</p>
+<pre><code>ListIterator lit = list.listIterator();        //如果想在遍历的过程中添加元素,可以用ListIterator中的add方法
+while(lit.hasNext()) {
+    String str = (String)lit.next();
+    if(str.equals(&quot;world&quot;)) {
+        lit.add(&quot;javaee&quot;);    
+        //list.add(&quot;javaee&quot;);
+    }
+}
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<p>###15.12_集合框架(ListIterator)(了解)</p>
+<ul>
+<li>boolean hasNext()是否有下一个</li>
+<li>boolean hasPrevious()是否有前一个</li>
+<li>Object next()返回下一个元素， 获取元素并将指针向后移动</li>
+<li>Object previous();返回上一个元素，获取元素并将指针向前移动</li>
+</ul>
+<p>###15.13_集合框架(Vector的特有功能)</p>
+<ul>
+<li>A:Vector类概述</li>
+<li>B:Vector类特有功能<ul>
+<li>public void addElement(E obj)</li>
+<li>public E elementAt(int index)</li>
+<li>public Enumeration elements()</li>
+</ul>
+</li>
+<li><p>C:案例演示    </p>
+<ul>
+<li><p>Vector的迭代（Vector是用枚举Enumeration迭代）</p>
+<pre><code>Vector v = new Vector();                //创建集合对象,List的子类
+v.addElement(&quot;a&quot;);
+v.addElement(&quot;b&quot;);
+v.addElement(&quot;c&quot;);
+v.addElement(&quot;d&quot;);
+
+//Vector迭代
+Enumeration en = v.elements();            //获取枚举
+while(en.hasMoreElements()) {            //判断集合中是否有元素
+    System.out.println(en.nextElement());//获取集合中的元素
+}
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<p>###15.14_集合框架(数据结构之数组和链表：链表增删快，改查慢。数组则相反)</p>
+<ul>
+<li>A:数组<ul>
+<li>查询快修改也快</li>
+<li>增删慢</li>
+</ul>
+</li>
+<li>B:链表<ul>
+<li>查询慢,修改也慢</li>
+<li>增删快</li>
+</ul>
+</li>
+</ul>
+<p>###15.15_集合框架(List的三个子类的特点)</p>
+<ul>
+<li>A:List的三个子类的特点</li>
+<li><pre><code>ArrayList:
+    底层数据结构是数组，查询快，增删慢。
+    线程不安全，效率高。线程不同步
+Vector:
+    底层数据结构是数组，查询快，增删慢。
+    线程安全，效率低。
+Vector相对ArrayList查询慢(线程安全的)
+Vector相对LinkedList（链表结构）增删慢(数组结构)
+LinkedList:
+    底层数据结构是链表，查询慢，增删快。
+    线程不安全，效率高。
+
+Vector和ArrayList的区别
+    Vector是线程安全的,效率低
+    ArrayList是线程不安全的,效率高。线程同步
+共同点:都是数组实现的
+ArrayList和LinkedList的区别
+    ArrayList底层是数组结果,查询和修改快
+    LinkedList底层是链表结构的,增和删比较快,查询和修改比较慢
+共同点:都是线程不安全的
+</code></pre></li>
+<li>B:List有三个儿子，我们到底使用谁呢?<pre><code>查询多用ArrayList
+增删多用LinkedList
+如果都多ArrayList（Vector已经被ArrayList完全取代了，如果要求线程安全可以使用工具类，将ArrayList变为线程安全的，
+                    所以Vector已经几乎不再使用了）
+</code></pre>###15.16_day15总结<br>把今天的知识点总结一遍。</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/List/" rel="tag"># List</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/07/day14-Date笔记/" rel="next" title="正则表达式与Date类">
+                <i class="fa fa-chevron-left"></i> 正则表达式与Date类
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/12/day16-ArrayList、泛型笔记/" rel="prev" title="ArrayList，泛型">
+                ArrayList，泛型 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="Zou Yipeng" />
+            
+              <p class="site-author-name" itemprop="name">Zou Yipeng</p>
+              <p class="site-description motion-element" itemprop="description">欢迎来到Zou Yipeng的blog,让我们一起学习吧！</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/zouyip" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:1281797783@qq.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zou Yipeng</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

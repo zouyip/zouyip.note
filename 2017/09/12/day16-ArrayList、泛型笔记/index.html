@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="StringBuffer," />
+  <meta name="keywords" content="ArrayList，泛型," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="###13.01_常见对象(StringBuffer类的概述)  A:StringBuffer类概述 通过JDK提供的API，查看StringBuffer类的说明 线程安全的可变字符序列    B:StringBuffer和String的区别 String是一个不可变的字符序列 StringBuffer是一个可变的字符序列     ###13.02_常见对象(StringBuffer类的构造方法)">
-<meta name="keywords" content="StringBuffer">
+<meta name="description" content="###16.01_集合框架(去除ArrayList中重复字符串元素方式)(掌握)  A:案例演示  需求：ArrayList去除集合中字符串的重复值(字符串的内容相同) 思路：创建新集合方式 /**  *  A:案例演示  * 需求：ArrayList去除集合中字符串的重复值(字符串的内容相同)  * 思路：创建新集合方式  */ public static void main(String[]">
+<meta name="keywords" content="ArrayList，泛型">
 <meta property="og:type" content="article">
-<meta property="og:title" content="StringBuffer类">
-<meta property="og:url" content="http://zouyip.github.io/2017/09/07/day13-StringBuffer笔记/index.html">
+<meta property="og:title" content="ArrayList，泛型">
+<meta property="og:url" content="http://zouyip.github.io/2017/09/12/day16-ArrayList、泛型笔记/index.html">
 <meta property="og:site_name" content="菜鸟的心酸历程">
-<meta property="og:description" content="###13.01_常见对象(StringBuffer类的概述)  A:StringBuffer类概述 通过JDK提供的API，查看StringBuffer类的说明 线程安全的可变字符序列    B:StringBuffer和String的区别 String是一个不可变的字符序列 StringBuffer是一个可变的字符序列     ###13.02_常见对象(StringBuffer类的构造方法)">
+<meta property="og:description" content="###16.01_集合框架(去除ArrayList中重复字符串元素方式)(掌握)  A:案例演示  需求：ArrayList去除集合中字符串的重复值(字符串的内容相同) 思路：创建新集合方式 /**  *  A:案例演示  * 需求：ArrayList去除集合中字符串的重复值(字符串的内容相同)  * 思路：创建新集合方式  */ public static void main(String[]">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-25T01:37:24.518Z">
+<meta property="og:updated_time" content="2017-10-25T01:49:34.123Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="StringBuffer类">
-<meta name="twitter:description" content="###13.01_常见对象(StringBuffer类的概述)  A:StringBuffer类概述 通过JDK提供的API，查看StringBuffer类的说明 线程安全的可变字符序列    B:StringBuffer和String的区别 String是一个不可变的字符序列 StringBuffer是一个可变的字符序列     ###13.02_常见对象(StringBuffer类的构造方法)">
+<meta name="twitter:title" content="ArrayList，泛型">
+<meta name="twitter:description" content="###16.01_集合框架(去除ArrayList中重复字符串元素方式)(掌握)  A:案例演示  需求：ArrayList去除集合中字符串的重复值(字符串的内容相同) 思路：创建新集合方式 /**  *  A:案例演示  * 需求：ArrayList去除集合中字符串的重复值(字符串的内容相同)  * 思路：创建新集合方式  */ public static void main(String[]">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://zouyip.github.io/2017/09/07/day13-StringBuffer笔记/"/>
+  <link rel="canonical" href="http://zouyip.github.io/2017/09/12/day16-ArrayList、泛型笔记/"/>
 
 
 
 
 
-  <title>StringBuffer类 | 菜鸟的心酸历程</title>
+  <title>ArrayList，泛型 | 菜鸟的心酸历程</title>
   
 
 
@@ -283,7 +283,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zouyip.github.io/2017/09/07/day13-StringBuffer笔记/">
+    <link itemprop="mainEntityOfPage" href="http://zouyip.github.io/2017/09/12/day16-ArrayList、泛型笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zou Yipeng">
@@ -300,7 +300,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">StringBuffer类</h1>
+          <h1 class="post-title" itemprop="name headline">ArrayList，泛型</h1>
         
 
         <div class="post-meta">
@@ -312,8 +312,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-07T11:50:30+08:00">
-                2017-09-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-12T16:53:30+08:00">
+                2017-09-12
               </time>
             
 
@@ -372,378 +372,318 @@
       
 
       
-        <p>###13.01_常见对象(StringBuffer类的概述)</p>
-<ul>
-<li>A:StringBuffer类概述<ul>
-<li>通过JDK提供的API，查看StringBuffer类的说明</li>
-<li>线程安全的可变字符序列 </li>
-</ul>
-</li>
-<li>B:StringBuffer和String的区别<ul>
-<li>String是一个不可变的字符序列</li>
-<li>StringBuffer是一个可变的字符序列 </li>
-</ul>
-</li>
-</ul>
-<p>###13.02_常见对象(StringBuffer类的构造方法)</p>
-<ul>
-<li>A:StringBuffer的构造方法：<ul>
-<li>public StringBuffer():无参构造方法</li>
-<li>public StringBuffer(int capacity):指定容量的字符串缓冲区对象</li>
-<li>public StringBuffer(String str):指定字符串内容的字符串缓冲区对象</li>
-</ul>
-</li>
-<li>B:StringBuffer的方法：<ul>
-<li>public int capacity()：返回当前容量。    理论值(不掌握)</li>
-<li>public int length():返回长度（字符数）。 实际值</li>
-</ul>
-</li>
-<li>C:案例演示<ul>
-<li>构造方法和长度方法的使用</li>
-</ul>
-</li>
-</ul>
-<p>###13.03_常见对象(StringBuffer的添加功能)</p>
-<ul>
-<li><p>A:StringBuffer的添加功能</p>
-<ul>
-<li>public StringBuffer append(String str):<ul>
-<li>可以把任意类型数据添加到字符串缓冲区里面,并返回字符串缓冲区本身</li>
-</ul>
-</li>
-<li><p>public StringBuffer insert(int offset,String str):</p>
-<ul>
-<li>在指定位置把任意类型的数据插入到字符串缓冲区里面,并返回字符串缓冲区本身</li>
-</ul>
-<p>StringBuffer是字符串缓冲区,当new的时候是在堆内存创建了一个对象,底层是一个长度为16的字符数组<br>  当调用添加的方法时,不会再重新创建对象,在不断向原缓冲区添加字符</p>
-</li>
-</ul>
-</li>
-</ul>
-<p>###13.04_常见对象(StringBuffer的删除功能)</p>
-<ul>
-<li>A:StringBuffer的删除功能<ul>
-<li>public StringBuffer deleteCharAt(int index):<ul>
-<li>删除指定位置的字符，并返回本身</li>
-</ul>
-</li>
-<li>public StringBuffer delete(int start,int end):<ul>
-<li>删除从指定位置开始指定位置结束的内容，并返回本身</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>###13.05_常见对象(StringBuffer的替换和反转功能)</p>
-<ul>
-<li>A:StringBuffer的替换功能<ul>
-<li>public StringBuffer replace(int start,int end,String str):<ul>
-<li>从start开始到end用str替换</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>B:StringBuffer的反转功能<ul>
-<li>public StringBuffer reverse():<ul>
-<li>字符串反转</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>###13.06_常见对象(StringBuffer的截取功能及注意事项)</p>
-<ul>
-<li>A:StringBuffer的截取功能<ul>
-<li>public String substring(int start):<ul>
-<li>从指定位置截取到末尾</li>
-</ul>
-</li>
-<li>public String substring(int start,int end):<ul>
-<li>截取从指定位置开始到结束位置，包括开始位置，不包括结束位置</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>B:注意事项<ul>
-<li>注意:返回值类型不再是StringBuffer本身</li>
-</ul>
-</li>
-</ul>
-<p>###13.07_常见对象(StringBuffer和String的相互转换)</p>
-<ul>
-<li>A:String – StringBuffer<ul>
-<li>a:通过构造方法</li>
-<li>b:通过append()方法</li>
-</ul>
-</li>
-<li>B:StringBuffer – String<ul>
-<li>a:通过构造方法</li>
-<li>b:通过toString()方法</li>
-<li>c:通过subString(0,length);</li>
-</ul>
-</li>
-</ul>
-<p>###13.08_常见对象(把数组转成字符串)</p>
+        <p>###16.01_集合框架(去除ArrayList中重复字符串元素方式)(掌握)</p>
 <ul>
 <li><p>A:案例演示</p>
 <ul>
-<li>需求：把数组中的数据按照指定个格式拼接成一个字符串</li>
-<li><pre><code>举例：
-    int[] arr = {1,2,3};    
-输出结果：
-    &quot;[1, 2, 3]&quot;
+<li>需求：ArrayList去除集合中字符串的重复值(字符串的内容相同)</li>
+<li><p>思路：创建新集合方式</p>
+<pre><code>/**
+ *  A:案例演示
+ * 需求：ArrayList去除集合中字符串的重复值(字符串的内容相同)
+ * 思路：创建新集合方式
+ */
+public static void main(String[] args) {
+    ArrayList list = new ArrayList();
+    list.add(&quot;a&quot;);
+    list.add(&quot;a&quot;);
+    list.add(&quot;b&quot;);
+    list.add(&quot;b&quot;);
+    list.add(&quot;b&quot;);
+    list.add(&quot;c&quot;);
+    list.add(&quot;c&quot;);
+    list.add(&quot;c&quot;);
+    list.add(&quot;c&quot;);
 
-用StringBuffer的功能实现
-</code></pre></li>
-</ul>
-</li>
-</ul>
-<p>###13.09_常见对象(字符串反转)</p>
-<ul>
-<li>A:案例演示</li>
-<li><pre><code>需求：把字符串反转
-    举例：键盘录入&quot;abc&quot;        
-    输出结果：&quot;cba&quot;
+    System.out.println(list);
+    ArrayList newList = getSingle(list);
+    System.out.println(newList);
+}
 
-用StringBuffer的功能实现    
-</code></pre></li>
-</ul>
-<p>###13.10_常见对象(StringBuffer和StringBuilder的区别)</p>
-<ul>
-<li>A:StringBuilder的概述<ul>
-<li>通过查看API了解一下StringBuilder类</li>
-</ul>
-</li>
-<li><p>B:面试题</p>
-<ul>
-<li>String,StringBuffer,StringBuilder的区别</li>
-<li>StringBuffer和StringBuilder的区别</li>
-<li>StringBuffer是jdk1.0版本的,是线程安全的,效率低</li>
-<li><p>StringBuilder是jdk1.5版本的,是线程不安全的,效率高</p>
-</li>
-<li><p>String和StringBuffer,StringBuilder的区别</p>
-</li>
-<li>String是一个不可变的字符序列</li>
-<li>StringBuffer,StringBuilder是可变的字符序列</li>
-</ul>
+/*
+ * 去除重复
+ * 1,返回ArrayList
+ * 2,参数列表ArrayList
+ */
+public static ArrayList getSingle(ArrayList list) {
+    ArrayList newList = new ArrayList();            //创建一个新集合
+    Iterator it = list.iterator();                    //获取迭代器
+    while(it.hasNext()) {                            //判断老集合中是否有元素
+        String temp = (String)it.next();            //将每一个元素临时记录住
+        if(!newList.contains(temp)) {                //如果新集合中不包含该元素
+            newList.add(temp);                        //将该元素添加到新集合中
+        }
+    }
+    return newList;                                    //将新集合返回
+}
+</code></pre><p>###16.02_集合框架(去除ArrayList中重复自定义对象元素)(掌握)</p>
 </li>
 </ul>
-<p>###13.11_常见对象(String和StringBuffer分别作为参数传递)</p>
-<ul>
-<li>A:形式参数问题<ul>
-<li>String作为参数传递</li>
-<li>StringBuffer作为参数传递 </li>
-</ul>
 </li>
-<li>B:案例演示<ul>
-<li>String和StringBuffer分别作为参数传递问题</li>
-</ul>
-</li>
-</ul>
-<p>###13.12_常见对象(数组高级冒泡排序原理图解)</p>
-<ul>
-<li>A:画图演示</li>
-<li><pre><code>需求：
-    数组元素：{24, 69, 80, 57, 13}
-    请对数组元素进行排序。
-
-    冒泡排序
-        相邻元素两两比较，大的往后放，第一次完毕，最大值出现在了最大索引处
-</code></pre></li>
-</ul>
-<p>###13.13_常见对象(数组高级冒泡排序代码实现)</p>
-<ul>
 <li>A:案例演示<ul>
-<li>数组高级冒泡排序代码</li>
-</ul>
-</li>
-</ul>
-<p>###13.14_常见对象(数组高级选择排序原理图解)</p>
-<ul>
-<li><p>A:画图演示</p>
-<ul>
-<li><p>需求：</p>
-<ul>
-<li>数组元素：{24, 69, 80, 57, 13}</li>
-<li><p>请对数组元素进行排序。</p>
-</li>
-<li><p>选择排序</p>
-<ul>
-<li>从0索引开始，依次和后面元素比较，小的往前放，第一次完毕，最小值出现在了最小索引处</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>###13.15_常见对象(数组高级选择排序代码实现)</p>
-<ul>
-<li>A:案例演示<ul>
-<li>数组高级选择排序代码</li>
-</ul>
-</li>
-</ul>
-<p>###13.16_常见对象(数组高级二分查找原理图解)</p>
-<ul>
-<li>A:画图演示<ul>
-<li>二分查找  </li>
-<li>前提：数组元素有序</li>
-</ul>
-</li>
-</ul>
-<p>###13.17_常见对象(数组高级二分查找代码实现及注意事项)</p>
-<ul>
-<li>A:案例演示<ul>
-<li>数组高级二分查找代码</li>
+<li>需求：ArrayList去除集合中自定义对象元素的重复值(对象的成员变量值相同)</li>
 </ul>
 </li>
 <li>B:注意事项<ul>
-<li>如果数组无序，就不能使用二分查找。<ul>
-<li>因为如果你排序了，但是你排序的时候已经改变了我最原始的元素索引。</li>
+<li>重写equals()方法<br>  contains方法判断是否包含,底层依赖的是equals方法.<br>  remove方法判断是否删除,底层依赖的是equals方法.</li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-<p>####总结：循环嵌套的排序算法中外层循环控制的是比较的次数。</p>
-<p>###13.18_常见对象(Arrays类的概述和方法使用)</p>
+<p>###16.03_集合框架(LinkedList的特有功能)(掌握)</p>
 <ul>
-<li>A:Arrays类概述<ul>
-<li>针对数组进行操作的工具类。</li>
-<li>提供了排序，查找等功能。</li>
-</ul>
-</li>
-<li>B:成员方法<ul>
-<li>public static String toString(int[] a)</li>
-<li>public static void sort(int[] a)</li>
-<li>public static int binarySearch(int[] a,int key)</li>
-</ul>
-</li>
-</ul>
-<p>###13.19_常见对象(基本类型包装类的概述)</p>
+<li>A:LinkedList类概述</li>
+<li><p>B:LinkedList类特有功能</p>
 <ul>
-<li>A:为什么会有基本类型包装类<ul>
-<li>将基本数据类型封装成对象的好处在于可以在对象中定义更多的功能方法操作该数据。</li>
-</ul>
-</li>
-<li>B:常用操作<ul>
-<li>常用的操作之一：用于基本数据类型与字符串之间的转换。</li>
-</ul>
-</li>
-<li>C:基本类型和包装类的对应</li>
-<li><pre><code>byte             Byte
-short            Short
-int                Integer
-long            Long
-float            Float
-double            Double
-char            Character
-boolean            Boolean
+<li>public void addFirst(E e)及addLast(E e)    在头部添加元素 或在尾部添加元素 </li>
+<li>public E getFirst()及getLast()</li>
+<li>public E removeFirst()及public E removeLast()</li>
+<li><p>public E get(int index);</p>
+<p>LinkedList：</p>
+<p>  *特有方法：　　</p>
+<pre><code>*addFirst();在头部添加元素      addLast();在尾部添加元素
+*getFirst(); getLast(); 获取元素但不删除元素。如果集合中没有元素，会出现NoSuchElementException
+*removeFirst();   removeLast(); 获取元素但是删除元素。如果集合中没有元素，会出现NoSuchElementException
+
+*在JDK1.6出现了替代方法
+*offerFirst(); offerLast();
+*peekFirst(); peekLast(); 获取元素，但是元素不被删除。如果集合中没有元素，会返回null
+*pollFirst(); pollLast(); 获取元素，但是元素被删除。如果集合中没有元素，会返回null
 </code></pre></li>
 </ul>
-<p>###13.20_常见对象(Integer类的概述和构造方法)</p>
-<ul>
-<li><p>A:Integer类概述</p>
-<ul>
-<li><p>通过JDK提供的API，查看Integer类的说明</p>
 </li>
-<li><p>Integer 类在对象中包装了一个基本类型 int 的值,</p>
-</li>
-<li>该类提供了多个方法，能在 int 类型和 String 类型之间互相转换，</li>
-<li>还提供了处理 int 类型时非常有用的其他一些常量和方法</li>
+</ul>
+<p>###16.04_集合框架(栈和队列数据结构)(掌握)</p>
+<ul>
+<li>栈<ul>
+<li>先进后出 </li>
 </ul>
 </li>
-<li>B:构造方法<ul>
-<li>public Integer(int value)</li>
-<li>public Integer(String s)<br>  //Integer i2 = new Integer(“abc”);            //java.lang.NumberFormatException数字格式异常<br>  //System.out.println(i2);                    //因为abc不是数字字符串,所以转换会报错</li>
+<li>队列<ul>
+<li>先进先出</li>
+</ul>
+</li>
+</ul>
+<p>###16.05_集合框架(用LinkedList模拟栈数据结构的集合并测试)(掌握)</p>
+<ul>
+<li><p>A:案例演示</p>
+<ul>
+<li>需求：请用LinkedList模拟栈数据结构的集合，并测试</li>
+<li>创建一个类将Linked中的方法封装</li>
+<li><pre><code>public class Stack {
+    private LinkedList list = new LinkedList();        //创建LinkedList对象
+
+    public void in(Object obj) {
+        list.addLast(obj);                            //封装addLast()方法
+    }
+
+    public Object out() {
+        return list.removeLast();                    //封装removeLast()方法
+    }
+
+    public boolean isEmpty() {
+        return list.isEmpty();                        //封装isEmpty()方法
+    }
+}
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<p>###16.06_集合框架(泛型概述和基本使用)(掌握)</p>
+<ul>
+<li>A:泛型概述</li>
+<li>B:泛型好处<ul>
+<li>提高安全性(将运行期的错误转换到编译期) </li>
+<li>省去强转的麻烦</li>
+</ul>
+</li>
+<li>C:泛型基本使用<ul>
+<li>&lt;&gt;中放的必须是引用数据类型 </li>
+</ul>
+</li>
+<li>D:泛型使用注意事项<ul>
+<li>前后的泛型必须一致,或者后面的泛型可以省略不写(1.7的新特性菱形泛型)  </li>
+</ul>
+</li>
+</ul>
+<p>###16.07_集合框架(ArrayList存储字符串和自定义对象并遍历泛型版)(掌握)</p>
+<ul>
+<li>A:案例演示<ul>
+<li>ArrayList存储字符串并遍历泛型版</li>
+</ul>
+</li>
+</ul>
+<p>###16.08_集合框架(泛型的由来)(了解)</p>
+<ul>
+<li>A:案例演示<ul>
+<li>泛型的由来:通过Object转型问题引入</li>
+<li>早期的Object类型可以接收任意的对象类型，但是在实际的使用中，会有类型转换的问题。也就存在这隐患，所以Java提供了泛型来解决这个安全问题。</li>
+</ul>
+</li>
+</ul>
+<p>###16.09_集合框架(泛型类的概述及使用)(了解)</p>
+<ul>
+<li>A:泛型类概述<t><ul>
+<li>把泛型定义在类上</li>
+</ul>
+</t></li>
+<li>B:定义格式<ul>
+<li>public class 类名&lt;泛型类型1,…&gt;</li>
+</ul>
+</li>
+<li>C:注意事项    <ul>
+<li>泛型类型必须是引用类型</li>
+</ul>
+</li>
+<li>D:案例演示<ul>
+<li>泛型类的使用</li>
+</ul>
+</li>
+</ul>
+<p>###16.10_集合框架(泛型方法的概述和使用)(了解)</p>
+<ul>
+<li>A:泛型方法概述<ul>
+<li>把泛型定义在方法上</li>
+</ul>
+</li>
+<li>B:定义格式    <ul>
+<li>public &lt;泛型类型&gt; 返回类型 方法名(泛型类型 变量名)</li>
 </ul>
 </li>
 <li>C:案例演示<ul>
-<li>使用构造方法创建对象</li>
+<li>泛型方法的使用</li>
 </ul>
 </li>
 </ul>
-<p>###13.21_常见对象(String和int类型的相互转换)</p>
+<p>###16.11_集合框架(泛型接口的概述和使用)(了解)</p>
 <ul>
-<li>A:int – String<ul>
-<li>a:和””进行拼接</li>
-<li>b:public static String valueOf(int i)</li>
-<li>c:int – Integer – String(Integer类的toString方法())</li>
-<li>d:public static String toString(int i)(Integer类的静态方法)</li>
+<li>A:泛型接口概述<ul>
+<li>把泛型定义在接口上</li>
 </ul>
 </li>
-<li>B:String – int<ul>
-<li>a:String – Integer – int</li>
-<li>public static int parseInt(String s)</li>
+<li>B:定义格式    <ul>
+<li>public interface 接口名&lt;泛型类型&gt;</li>
+</ul>
+</li>
+<li>C:案例演示<ul>
+<li>泛型接口的使用</li>
 </ul>
 </li>
 </ul>
-<p>###13.22_常见对象(JDK5的新特性自动装箱和拆箱)</p>
+<p>###16.12_集合框架(泛型高级之通配符)(了解)</p>
 <ul>
-<li>A:JDK5的新特性<ul>
-<li>自动装箱：把基本类型转换为包装类类型</li>
-<li>自动拆箱：把包装类类型转换为基本类型</li>
+<li>A:泛型通配符&lt;?&gt;<ul>
+<li>任意类型，如果没有明确，那么就是Object以及任意的Java类了</li>
 </ul>
 </li>
-<li><p>B:案例演示</p>
+<li>B:? extends E<ul>
+<li>向下限定，E及其子类</li>
+</ul>
+</li>
+<li><p>C:? super E</p>
 <ul>
-<li><p>JDK5的新特性自动装箱和拆箱</p>
+<li><p>向上限定，E及其父类</p>
+<p>List&lt;?&gt; list = new ArrayList<integer>();            //当右边的泛型是不确定时,左边可以指定为?</integer></p>
 </li>
-<li><p>Integer ii = 100;</p>
+</ul>
 </li>
-<li>ii += 200;</li>
+</ul>
+<p>###16.13_集合框架(增强for的概述和使用)(掌握)</p>
+<ul>
+<li>A:增强for概述（底层是用Iterator迭代器实现的）<ul>
+<li>简化数组和Collection集合的遍历</li>
+</ul>
+</li>
+<li>B:格式：</li>
+<li><pre><code>for(元素数据类型 变量 : 数组或者Collection集合) {
+    使用变量即可，该变量就是元素
+}
+</code></pre></li>
+<li>C:案例演示<ul>
+<li>数组，集合存储元素用增强for遍历</li>
+</ul>
+</li>
+<li>D:好处<ul>
+<li>简化遍历</li>
+</ul>
+</li>
+</ul>
+<p>###16.14_集合框架(ArrayList存储字符串和自定义对象并遍历增强for版)(掌握)</p>
+<ul>
+<li><p>A:案例演示</p>
+<ul>
+<li>ArrayList存储字符串并遍历增强for版</li>
+<li><pre><code>ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;();
+list.add(&quot;a&quot;);
+list.add(&quot;b&quot;);
+list.add(&quot;c&quot;);
+list.add(&quot;d&quot;);
+
+for(String s : list) {
+    System.out.println(s);
+}
+</code></pre><p>###16.15_集合框架(三种迭代的能否删除)(掌握)</p>
+</li>
+</ul>
+</li>
+<li>普通for循环,可以删除,但是索引要–  （因为删除数组中的一个元素后后面的元素会向上补齐）</li>
+<li>迭代器,可以删除,但是必须使用迭代器自身的remove方法,否则会出现并发修改异常</li>
+<li>增强for循环不能删除，（增强for的底层依赖的是Iterator迭代器，会发生并发修改异常）</li>
+</ul>
+<p>###16.16_集合框架(静态导入的概述和使用)(掌握)</p>
+<ul>
+<li>A:静态导入概述</li>
+<li>B:格式：<ul>
+<li>import static 包名….类名.方法名;</li>
+<li>可以直接导入到方法的级别</li>
 </ul>
 </li>
 <li>C:注意事项<ul>
-<li>在使用时，Integer  x = null;代码就会出现NullPointerException。</li>
-<li>建议先判断是否为null，然后再使用。</li>
+<li>方法必须是静态的,如果有多个同名的静态方法，容易不知道使用谁?这个时候要使用，必须加前缀。由此可见，意义不大，所以一般不用，但是要能看懂。</li>
 </ul>
 </li>
 </ul>
-<p>###13.23_常见对象(Integer的面试题)</p>
+<p>###16.17_集合框架(可变参数的概述和使用)(掌握)</p>
 <ul>
-<li>A:Integer的面试题</li>
-<li><pre><code>看程序写结果
-
-Integer i1 = new Integer(97);
-Integer i2 = new Integer(97);
-System.out.println(i1 == i2);        //false
-System.out.println(i1.equals(i2));    //true
-System.out.println(&quot;-----------&quot;);
-
-Integer i3 = new Integer(197);
-Integer i4 = new Integer(197);
-System.out.println(i3 == i4);        //false
-System.out.println(i3.equals(i4));    //true
-System.out.println(&quot;-----------&quot;);
-
-Integer i5 = 97;
-Integer i6 = 97;
-System.out.println(i5 == i6);        //true
-System.out.println(i5.equals(i6));    //true 
-System.out.println(&quot;-----------&quot;);
-
-Integer i7 = 197;
-Integer i8 = 197;
-System.out.println(i7 == i8);        //false
-System.out.println(i7.equals(i8));    //true    
-</code></pre></li>
-<li><p>-128到127是byte的取值范围,如果在这个取值范围内,自动装箱就不会新创建对象,而是从常量池中获取</p>
-<pre><code>* 如果超过了byte取值范围就会再新创建对象
-* 
-* public static Integer valueOf(int i) {
-       assert IntegerCache.high &gt;= 127;
-       if (i &gt;= IntegerCache.low &amp;&amp; i &lt;= IntegerCache.high)            //i&gt;= -128 &amp;&amp; i &lt;= 127
-           return IntegerCache.cache[i + (-IntegerCache.low)];
-       return new Integer(i);
-   }
-*/
-</code></pre><p>  }</p>
+<li>A:可变参数概述<ul>
+<li>定义方法的时候不知道该定义多少个参数</li>
+</ul>
+</li>
+<li>B:格式<ul>
+<li>修饰符 返回值类型 方法名(数据类型…  变量名){}</li>
+</ul>
+</li>
+<li>C:注意事项：<ul>
+<li>这里的变量其实是一个数组（可变参数其实是数组。长度可变）</li>
+<li>如果一个方法有可变参数，并且有多个参数，那么，可变参数肯定是最后一个</li>
+</ul>
 </li>
 </ul>
-<p>}</p>
-<p>###13.24_day13总结</p>
+<p>###16.18_集合框架(Arrays工具类的asList()方法的使用)(掌握)</p>
+<ul>
+<li><p>A:案例演示</p>
+<ul>
+<li><p>Arrays工具类的asList()方法的使用<br>  *数组转换成集合</p>
+<ul>
+<li><p>数组转换成集合虽然不能增加或减少元素,但是可以用集合的思想操作数组,也就是说可以使用其他集合中的方法<br>List<string> list = Arrays.asList(arr);                //将数组转换成集合<br>list.add(“d”);                                        //不能添加</string></p>
+<p>  <strong>基本数据类型的数组转换成集合,会将整个数组当作一个对象转换
+  </strong>将数组转换成集合,数组必须是引用数据类型</p>
+<p>  <strong>当集合转换数组时,数组长度如果是小于等于集合的size时,转换后的数组长度等于集合的size
+  </strong>如果数组的长度大于了size,分配的数组长度就和你指定的长度一样</p>
+</li>
+</ul>
+</li>
+<li>Collection中toArray(T[] a)泛型版的集合转数组</li>
+</ul>
+</li>
+</ul>
+<p>###16.19_集合框架(集合嵌套之ArrayList嵌套ArrayList)(掌握)</p>
+<ul>
+<li>A:案例演示<ul>
+<li>集合嵌套之ArrayList嵌套ArrayList</li>
+</ul>
+</li>
+</ul>
+<p>###16.20_day16总结</p>
 <ul>
 <li>把今天的知识点总结一遍。</li>
 </ul>
@@ -764,7 +704,7 @@ System.out.println(i7.equals(i8));    //true
       
         <div class="post-tags">
           
-            <a href="/tags/StringBuffer/" rel="tag"># StringBuffer</a>
+            <a href="/tags/ArrayList，泛型/" rel="tag"># ArrayList，泛型</a>
           
         </div>
       
@@ -777,8 +717,8 @@ System.out.println(i7.equals(i8));    //true
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/06/day12-String笔记/" rel="next" title="String类概述">
-                <i class="fa fa-chevron-left"></i> String类概述
+              <a href="/2017/09/10/day15-List笔记/" rel="next" title="List">
+                <i class="fa fa-chevron-left"></i> List
               </a>
             
           </div>
@@ -787,8 +727,8 @@ System.out.println(i7.equals(i8));    //true
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/09/07/day14-Date笔记/" rel="prev" title="正则表达式与Date类">
-                正则表达式与Date类 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/09/12/day17-Set笔记/" rel="prev" title="Set">
+                Set <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
