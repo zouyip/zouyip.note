@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="多线程," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="菜鸟的心酸历程" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="###24.01_多线程(多线程的引入)(了解)  1.什么是线程 线程是程序执行的一条路径, 一个进程中可以包含多条线程 多线程并发执行可以提高程序的效率, 可以同时完成多项工作   2.多线程的应用场景 红蜘蛛同时共享屏幕给多个电脑 迅雷开启多条线程一起下载 QQ同时和多个人一起视频 服务器同时处理多个客户端请求    ###24.02_多线程(多线程并行和并发的区别)(了解)  并行就是两个">
+<meta name="keywords" content="多线程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="多线程">
+<meta property="og:url" content="http://zouyip.github.io/2017/09/22/day24-多线程笔记/index.html">
+<meta property="og:site_name" content="菜鸟的心酸历程">
+<meta property="og:description" content="###24.01_多线程(多线程的引入)(了解)  1.什么是线程 线程是程序执行的一条路径, 一个进程中可以包含多条线程 多线程并发执行可以提高程序的效率, 可以同时完成多项工作   2.多线程的应用场景 红蜘蛛同时共享屏幕给多个电脑 迅雷开启多条线程一起下载 QQ同时和多个人一起视频 服务器同时处理多个客户端请求    ###24.02_多线程(多线程并行和并发的区别)(了解)  并行就是两个">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-26T02:50:52.831Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="多线程">
+<meta name="twitter:description" content="###24.01_多线程(多线程的引入)(了解)  1.什么是线程 线程是程序执行的一条路径, 一个进程中可以包含多条线程 多线程并发执行可以提高程序的效率, 可以同时完成多项工作   2.多线程的应用场景 红蜘蛛同时共享屏幕给多个电脑 迅雷开启多条线程一起下载 QQ同时和多个人一起视频 服务器同时处理多个客户端请求    ###24.02_多线程(多线程并行和并发的区别)(了解)  并行就是两个">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://zouyip.github.io/2017/09/22/day24-多线程笔记/"/>
+
+
+
+
+
+  <title>多线程 | 菜鸟的心酸历程</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?5da72f9d0dfb00924337c58fbc4ef3dd";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">菜鸟的心酸历程</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">zyp's blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-search">
+          <a href="/search" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-search"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zouyip.github.io/2017/09/22/day24-多线程笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zou Yipeng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="菜鸟的心酸历程">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">多线程</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-22T19:20:20+08:00">
+                2017-09-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java基础/" itemprop="url" rel="index">
+                    <span itemprop="name">java基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>###24.01_多线程(多线程的引入)(了解)</p>
+<ul>
+<li>1.什么是线程<ul>
+<li>线程是程序执行的一条路径, 一个进程中可以包含多条线程</li>
+<li>多线程并发执行可以提高程序的效率, 可以同时完成多项工作</li>
+</ul>
+</li>
+<li>2.多线程的应用场景<ul>
+<li>红蜘蛛同时共享屏幕给多个电脑</li>
+<li>迅雷开启多条线程一起下载</li>
+<li>QQ同时和多个人一起视频</li>
+<li>服务器同时处理多个客户端请求</li>
+</ul>
+</li>
+</ul>
+<p>###24.02_多线程(多线程并行和并发的区别)(了解)</p>
+<ul>
+<li>并行就是两个任务同时运行，就是甲任务进行的同时，乙任务也在进行。(需要多核CPU)</li>
+<li>并发是指两个任务都请求运行，而处理器只能按受一个任务，就把这两个任务安排轮流进行，由于时间间隔较短，使人感觉两个任务都在运行。</li>
+<li>比如我跟两个网友聊天，左手操作一个电脑跟甲聊，同时右手用另一台电脑跟乙聊天，这就叫并行。</li>
+<li>如果用一台电脑我先给甲发个消息，然后立刻再给乙发消息，然后再跟甲聊，再跟乙聊。这就叫并发。</li>
+</ul>
+<p>###24.03_多线程(Java程序运行原理和JVM的启动是多线程的吗)(了解)</p>
+<ul>
+<li><p>A:Java程序运行原理</p>
+<ul>
+<li>Java命令会启动java虚拟机，启动JVM，等于启动了一个应用程序，也就是启动了一个进程。该进程会自动启动一个 “主线程” ，然后主线程去调用某个类的 main 方法。</li>
+</ul>
+</li>
+<li><p>B:JVM的启动是多线程的吗</p>
+<ul>
+<li>JVM启动至少启动了垃圾回收线程和主线程，所以是多线程的。</li>
+</ul>
+</li>
+</ul>
+<p>###24.04_多线程(多线程程序实现的方式1)(掌握)</p>
+<ul>
+<li><p>1.继承Thread</p>
+<ul>
+<li>定义类继承Thread</li>
+<li>重写run方法</li>
+<li>把新线程要做的事写在run方法中</li>
+<li>创建线程对象</li>
+<li>开启新线程, 内部会自动执行run方法</li>
+<li><pre><code>public class Demo2_Thread {
+
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+        MyThread mt = new MyThread();                            //4,创建自定义类的对象
+        mt.start();                                                //5,开启线程
+
+        for(int i = 0; i &lt; 3000; i++) {
+            System.out.println(&quot;bb&quot;);
+        }
+    }
+
+}
+class MyThread extends Thread {                                    //1,定义类继承Thread
+    public void run() {                                            //2,重写run方法
+        for(int i = 0; i &lt; 3000; i++) {                            //3,将要执行的代码,写在run方法中
+            System.out.println(&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;);
+        }
+    }
+}
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<p>###24.05_多线程(多线程程序实现的方式2)(掌握)</p>
+<ul>
+<li><p>2.实现Runnable</p>
+<ul>
+<li>定义类实现Runnable接口</li>
+<li>实现run方法</li>
+<li>把新线程要做的事写在run方法中</li>
+<li>创建自定义的Runnable的子类对象</li>
+<li>创建Thread对象, 传入Runnable</li>
+<li><p>调用start()开启新线程, 内部会自动调用Runnable的run()方法</p>
+<pre><code>public class Demo3_Runnable {
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+        MyRunnable mr = new MyRunnable();                        //4,创建自定义类对象
+        //Runnable target = new MyRunnable();
+        Thread t = new Thread(mr);                                //5,将其当作参数传递给Thread的构造函数
+        t.start();                                                //6,开启线程
+
+        for(int i = 0; i &lt; 3000; i++) {
+            System.out.println(&quot;bb&quot;);
+        }
+    }
+}
+
+class MyRunnable implements Runnable {                            //1,自定义类实现Runnable接口
+    @Override
+    public void run() {                                            //2,重写run方法
+        for(int i = 0; i &lt; 3000; i++) {                            //3,将要执行的代码,写在run方法中
+            System.out.println(&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;);
+        }
+    }
+
+}
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<p>###24.06_多线程(实现Runnable的原理)(了解)</p>
+<ul>
+<li>查看源码<ul>
+<li>1,看Thread类的构造函数,传递了Runnable接口的引用 </li>
+<li>2,通过init()方法找到传递的target给成员变量的target赋值</li>
+<li>3,查看run方法,发现run方法中有判断,如果target不为null就会调用Runnable接口子类对象的run方法</li>
+</ul>
+</li>
+</ul>
+<p>###24.07_多线程(两种方式的区别)(掌握)</p>
+<ul>
+<li><p>查看源码的区别:</p>
+<ul>
+<li>a.继承Thread : 由于子类重写了Thread类的run(), 当调用start()时, 直接找子类的run()方法（这种是直接找子类的run()方法）</li>
+<li>b.实现Runnable : 构造函数中传入了Runnable的引用, 成员变量记住了它, start()调用run()方法时内部判断成员变量Runnable的引用<pre><code>是否为空, 不为空编译时看的是Runnable的run(),运行时执行的是子类的run()方法
+</code></pre></li>
+</ul>
+</li>
+<li><p>继承Thread</p>
+<ul>
+<li>好处是:可以直接使用Thread类中的方法,代码简单</li>
+<li>弊端是:如果已经有了父类,就不能用这种方法</li>
+</ul>
+</li>
+<li>实现Runnable接口<ul>
+<li>好处是:即使自己定义的线程类有了父类也没关系,因为有了父类也可以实现接口,而且接口是可以多实现的</li>
+<li>弊端是:不能直接使用Thread中的方法需要先获取到线程对象后,才能得到Thread的方法,代码复杂<br>###24.08_多线程(匿名内部类实现线程的两种方式)(掌握)</li>
+</ul>
+</li>
+<li><p>继承Thread类</p>
+<pre><code>new Thread() {                                                    //1,new 类(){}继承这个类
+    public void run() {                                            //2,重写run方法
+        for(int i = 0; i &lt; 3000; i++) {                            //3,将要执行的代码,写在run方法中
+            System.out.println(&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;);
+        }
+    }
+}.start();
+</code></pre></li>
+<li><p>实现Runnable接口</p>
+<pre><code>new Thread(new Runnable(){                                        //1,new 接口(){}实现这个接口
+    public void run() {                                            //2,重写run方法
+        for(int i = 0; i &lt; 3000; i++) {                            //3,将要执行的代码,写在run方法中
+            System.out.println(&quot;bb&quot;);
+        }
+    }
+}).start(); 
+</code></pre></li>
+</ul>
+<p>###24.09_多线程(获取名字和设置名字)(掌握)</p>
+<ul>
+<li>1.获取名字<ul>
+<li>通过getName()方法获取线程对象的名字</li>
+</ul>
+</li>
+<li><p>2.设置名字</p>
+<ul>
+<li>通过构造函数可以传入String类型的名字</li>
+<li><pre><code>new Thread(&quot;xxx&quot;) {
+    public void run() {
+        for(int i = 0; i &lt; 1000; i++) {
+            System.out.println(this.getName() + &quot;....aaaaaaaaaaaaaaaaaaaaaaa&quot;);
+        }
+    }
+}.start();
+
+new Thread(&quot;yyy&quot;) {
+    public void run() {
+        for(int i = 0; i &lt; 1000; i++) {
+            System.out.println(this.getName() + &quot;....bb&quot;);
+        }
+    }
+}.start(); 
+</code></pre></li>
+<li>通过setName(String)方法可以设置线程对象的名字</li>
+<li><pre><code>Thread t1 = new Thread() {
+    public void run() {
+        for(int i = 0; i &lt; 1000; i++) {
+            System.out.println(this.getName() + &quot;....aaaaaaaaaaaaaaaaaaaaaaa&quot;);
+        }
+    }
+};
+
+Thread t2 = new Thread() {
+    public void run() {
+        for(int i = 0; i &lt; 1000; i++) {
+            System.out.println(this.getName() + &quot;....bb&quot;);
+        }
+    }
+};
+t1.setName(&quot;芙蓉姐姐&quot;);
+t2.setName(&quot;凤姐&quot;);
+
+t1.start();
+t2.start();
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<p>###24.10_多线程(获取当前线程的对象)(掌握)</p>
+<ul>
+<li><p>Thread.currentThread(), 主线程也可以获取</p>
+<ul>
+<li><pre><code>new Thread(new Runnable() {
+    public void run() {
+        for(int i = 0; i &lt; 1000; i++) {
+            System.out.println(Thread.currentThread().getName() + &quot;...aaaaaaaaaaaaaaaaaaaaa&quot;);
+        }
+    }
+}).start();
+
+new Thread(new Runnable() {
+    public void run() {
+        for(int i = 0; i &lt; 1000; i++) {
+            System.out.println(Thread.currentThread().getName() + &quot;...bb&quot;);
+        }
+    }
+}).start();
+Thread.currentThread().setName(&quot;我是主线程&quot;);                    //获取主函数线程的引用,并改名字
+System.out.println(Thread.currentThread().getName());        //获取主函数线程的引用,并获取名字
+</code></pre><p>###24.11_多线程(休眠线程)(掌握)</p>
+</li>
+</ul>
+</li>
+<li><p>Thread.sleep(毫秒,纳秒), 控制当前线程休眠若干毫秒1秒= 1000毫秒 1秒 = 1000 <em> 1000 </em> 1000纳秒 1000000000</p>
+<pre><code>new Thread() {
+    public void run() {
+        for(int i = 0; i &lt; 10; i++) {
+            System.out.println(getName() + &quot;...aaaaaaaaaaaaaaaaaaaaaa&quot;);
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}.start();
+
+new Thread() {
+    public void run() {
+        for(int i = 0; i &lt; 10; i++) {
+            System.out.println(getName() + &quot;...bb&quot;);
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}.start();
+</code></pre><p>###24.12_多线程(守护线程)(掌握)</p>
+</li>
+<li><p>setDaemon(), 设置一个线程为守护线程, 该线程不会单独执行, 当其他非守护线程都执行结束后, 自动退出</p>
+<ul>
+<li><pre><code>Thread t1 = new Thread() {
+    public void run() {
+        for(int i = 0; i &lt; 50; i++) {
+            System.out.println(getName() + &quot;...aaaaaaaaaaaaaaaaaaaaaa&quot;);
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+};
+
+Thread t2 = new Thread() {
+    public void run() {
+        for(int i = 0; i &lt; 5; i++) {
+            System.out.println(getName() + &quot;...bb&quot;);
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+};
+
+t1.setDaemon(true);                        //将t1设置为守护线程
+
+t1.start();
+t2.start();
+</code></pre><p>###24.13_多线程(加入线程)(掌握)</p>
+</li>
+</ul>
+</li>
+<li>join(), 当前线程暂停, 等待指定的线程执行结束后, 当前线程再继续</li>
+<li><p>join(int), 可以等待指定的毫秒之后继续</p>
+<ul>
+<li><pre><code>final Thread t1 = new Thread() {
+    public void run() {
+        for(int i = 0; i &lt; 50; i++) {
+            System.out.println(getName() + &quot;...aaaaaaaaaaaaaaaaaaaaaa&quot;);
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+};
+
+Thread t2 = new Thread() {
+    public void run() {
+        for(int i = 0; i &lt; 50; i++) {
+            if(i == 2) {
+                try {
+                    //t1.join();                        //插队,加入
+                    t1.join(30);                        //加入,有固定的时间,过了固定时间,继续交替执行
+                    Thread.sleep(10);
+                } catch (InterruptedException e) {
+
+                    e.printStackTrace();
+                }
+            }
+            System.out.println(getName() + &quot;...bb&quot;);
+
+        }
+    }
+};
+
+t1.start();
+t2.start();
+</code></pre><p>###24.14_多线程(礼让线程)(了解)</p>
+</li>
+</ul>
+</li>
+<li>yield让出cpu</li>
+</ul>
+<p>###24.15_多线程(设置线程的优先级)(了解)</p>
+<ul>
+<li>setPriority()设置线程的优先级（设置了之后有一定的优先效果，但不是很明显）不是绝对优先的</li>
+</ul>
+<p>###24.16_多线程(同步代码块)(掌握)  [String常量池会有缓存，所以同步synchronize中都不使用String作为锁对象]<br>（锁对象不能用匿名对象,因为匿名对象不是同一个对象<br>    eg：synchronized(new Demo()){…}）</p>
+<ul>
+<li>1.什么情况下需要同步<ul>
+<li>当多线程并发, 有多段代码同时执行时, 我们希望某一段代码执行的过程中CPU不要切换到其他线程工作. 这时就需要同步.</li>
+<li>如果两段代码是同步的, 那么同一时间只能执行一段, 在一段代码没执行结束之前, 不会执行另外一段代码.</li>
+</ul>
+</li>
+<li>2.同步代码块<ul>
+<li>使用synchronized关键字加上一个锁对象来定义一段代码, 这就叫同步代码块</li>
+<li>多个同步代码块如果使用相同的锁对象, 那么他们就是同步的</li>
+</ul>
+</li>
+</ul>
+<pre><code>class Printer {
+    Demo d = new Demo();
+    public static void print1() {
+        synchronized(d){                //锁对象可以是任意对象,但是被锁的代码需要保证是同一把锁,不能用匿名对象
+            System.out.print(&quot;黑&quot;);
+            System.out.print(&quot;马&quot;);
+            System.out.print(&quot;程&quot;);
+            System.out.print(&quot;序&quot;);
+            System.out.print(&quot;员&quot;);
+            System.out.print(&quot;\r\n&quot;);
+        }
+    }
+
+    public static void print2() {    
+        synchronized(d){    
+            System.out.print(&quot;传&quot;);
+            System.out.print(&quot;智&quot;);
+            System.out.print(&quot;播&quot;);
+            System.out.print(&quot;客&quot;);
+            System.out.print(&quot;\r\n&quot;);
+        }
+    }
+}
+</code></pre><p>###24.17_多线程(同步方法)(掌握)</p>
+<ul>
+<li>使用synchronized关键字修饰一个方法, 该方法中所有的代码都是同步的<pre><code>class Printer {
+    public static void print1() {
+        synchronized(Printer.class){                //锁对象可以是任意对象,但是被锁的代码需要保证是同一把锁,不能用匿名对象
+            System.out.print(&quot;黑&quot;);
+            System.out.print(&quot;马&quot;);
+            System.out.print(&quot;程&quot;);
+            System.out.print(&quot;序&quot;);
+            System.out.print(&quot;员&quot;);
+            System.out.print(&quot;\r\n&quot;);
+        }
+    }
+    /*
+     * 非静态同步函数的锁是:this
+     * 静态的同步函数的锁是:字节码对象（static修饰的在类加载的时候一起加载的，所以锁对象是该类的字节码对象）
+     */
+    public static synchronized void print2() {    
+        System.out.print(&quot;传&quot;);
+        System.out.print(&quot;智&quot;);
+        System.out.print(&quot;播&quot;);
+        System.out.print(&quot;客&quot;);
+        System.out.print(&quot;\r\n&quot;);
+    }
+}
+</code></pre></li>
+</ul>
+<p>###24.18_多线程(线程安全问题)(掌握)</p>
+<ul>
+<li>多线程并发操作同一数据时, 就有可能出现线程安全问题</li>
+<li><p>使用同步技术可以解决这种问题, 把操作数据的代码进行同步, 不要多个线程一起操作</p>
+<pre><code>public class Demo2_Synchronized {
+
+    /**
+     * @param args
+     * 需求:铁路售票,一共100张,通过四个窗口卖完.
+     */
+    public static void main(String[] args) {
+        TicketsSeller t1 = new TicketsSeller();
+        TicketsSeller t2 = new TicketsSeller();
+        TicketsSeller t3 = new TicketsSeller();
+        TicketsSeller t4 = new TicketsSeller();
+
+        t1.setName(&quot;窗口1&quot;);
+        t2.setName(&quot;窗口2&quot;);
+        t3.setName(&quot;窗口3&quot;);
+        t4.setName(&quot;窗口4&quot;);
+        t1.start();
+        t2.start();
+        t3.start();
+        t4.start();
+    }
+
+}
+
+class TicketsSeller extends Thread {
+    private static int tickets = 100;
+    static Object obj = new Object();
+    public TicketsSeller() {
+        super();
+
+    }
+    public TicketsSeller(String name) {
+        super(name);
+    }
+    public void run() {
+        while(true) {
+            synchronized(obj) {
+                if(tickets &lt;= 0) 
+                    break;
+                try {
+                    Thread.sleep(10);//线程1睡,线程2睡,线程3睡,线程4睡
+                } catch (InterruptedException e) {
+
+                    e.printStackTrace();
+                }
+                System.out.println(getName() + &quot;...这是第&quot; + tickets-- + &quot;号票&quot;);
+            }
+        }
+    }
+}
+</code></pre></li>
+</ul>
+<p>###24.19_多线程(火车站卖票的例子用实现Runnable接口)(掌握)    </p>
+<p>###24.20_多线程(死锁)(了解)</p>
+<ul>
+<li><p>多线程同步的时候, 如果同步代码嵌套, 使用相同锁(外层的锁对象跟另一线程的内层嵌套的锁对象是同一个锁), 就有可能出现死锁</p>
+<ul>
+<li><p>尽量不要嵌套使用</p>
+<pre><code>private static String s1 = &quot;筷子左&quot;;
+private static String s2 = &quot;筷子右&quot;;
+public static void main(String[] args) {
+    new Thread() {
+        public void run() {
+            while(true) {
+                synchronized(s1) {
+                    System.out.println(getName() + &quot;...拿到&quot; + s1 + &quot;等待&quot; + s2);
+                    synchronized(s2) {
+                        System.out.println(getName() + &quot;...拿到&quot; + s2 + &quot;开吃&quot;);
+                    }
+                }
+            }
+        }
+    }.start();
+
+    new Thread() {
+        public void run() {
+            while(true) {
+                synchronized(s2) {
+                    System.out.println(getName() + &quot;...拿到&quot; + s2 + &quot;等待&quot; + s1);
+                    synchronized(s1) {
+                        System.out.println(getName() + &quot;...拿到&quot; + s1 + &quot;开吃&quot;);
+                    }
+                }
+            }
+        }
+    }.start();
+}
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<p>###24.21_多线程(以前的线程安全的类回顾)(掌握)</p>
+<ul>
+<li>A:回顾以前说过的线程安全问题<ul>
+<li>看源码：Vector,StringBuffer,Hashtable,Collections.synchroinzed(xxx)</li>
+<li>Vector是线程安全的,ArrayList是线程不安全的</li>
+<li>StringBuffer是线程安全的,StringBuilder是线程不安全的</li>
+<li>Hashtable是线程安全的,HashMap是线程不安全的<br>###24.22_多线程(总结)    </li>
+</ul>
+</li>
+</ul>
+<p>*阻塞状态:<br>    什么是阻塞状态呢？，是指当一个线程想获取自己的一个内置的对象锁的时候，这个对象锁被其他线程所占用，<br>    该线程不能执行这个就是阻塞状态，除非当另外一个线程释放锁，并且操作系统允许它执行他才变为非阻塞状态。<br>    这个怎么理解呢其实锁是分为对象锁和类锁 每一个对象都有一个内置的锁 ，在遇到同步的方法或则同步块也就是<br>    被Synchronized修饰的方法 或则使用synchronized的同步块，那么如果一个继承了Thread类或则实现了 Runnable接口的类<br>    下面我们创建了两个线程 这两个线程是实例了相同类创建不同的两个对象，分别启动了开启线程方法start()，<br>    因为我们在run方法中加了同步块，而同步块的锁是这个类的类锁，所以只要是这个类的实例对象都可以得到这个锁，<br>    但是我们都知道类锁只有一把，那个线程先抢到，谁就拥有执行权力，等到这个线程执行完了，释放锁其他线程才能执行。<br>    而没有得到锁的线程他的状态就是阻塞状态，等到拿到锁的线程执行完了，再把锁给它，它就是非阻塞状态了</p>
+
+      
+    </div>
+    
+    
+    
+	
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/多线程/" rel="tag"><i class="fa fa-tag"></i> 多线程</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/18/day22-IO其他流补充笔记/" rel="next" title="IO其他流补充">
+                <i class="fa fa-chevron-left"></i> IO其他流补充
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/22/day25-多线程-单例模式笔记/" rel="prev" title="多线程-单例模式">
+                多线程-单例模式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="Zou Yipeng" />
+            
+              <p class="site-author-name" itemprop="name">Zou Yipeng</p>
+              <p class="site-description motion-element" itemprop="description">欢迎来到Zou Yipeng的blog,让我们一起学习吧！</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/zouyip" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:1281797783@qq.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zou Yipeng</span>
+
+  
+</div>
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  <a href="https://github.com/you"><img style="position: absolute; top: 0; right: 0;
+  border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+</body>
+</html>
